@@ -1,155 +1,1165 @@
 <!DOCTYPE html>
-<!--
-  ================================================================
-  READ THIS BEFORE YOU PASTE ANYTHING
-
-  When Gemini gives you a page, you do NOT paste it into a part of
-  this file. You replace the entire file.
-
-  Click into the editor, press Ctrl+A (Cmd+A on Mac), press Delete,
-  then paste. Everything here is meant to be thrown away.
-
-  Do that only AFTER your live link works. Get the link first.
-  ================================================================
--->
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My first site</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --navy: #0d1d30;
-    --card: #142a44;
-    --line: #27466a;
-    --aqua: #6de1d7;
-    --text: #ffffff;
-    --muted: #94a9bf;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--navy);
-    color: var(--text);
-    font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
-    line-height: 1.6;
-    display: flex;
-    justify-content: center;
-    padding: 6vh 20px;
-  }
-  main { width: 100%; max-width: 640px; }
-  .badge {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--aqua);
-    margin-bottom: 18px;
-  }
-  h1 {
-    font-family: "Unbounded", "Manrope", sans-serif;
-    font-weight: 800;
-    font-size: clamp(38px, 9vw, 68px);
-    letter-spacing: -0.05em;
-    line-height: 1.02;
-    margin: 0 0 8px;
-  }
-  .name {
-    font-family: "Unbounded", "Manrope", sans-serif;
-    font-weight: 600;
-    font-size: clamp(18px, 4vw, 24px);
-    letter-spacing: -0.04em;
-    color: var(--aqua);
-    margin: 0 0 24px;
-  }
-  p.lead { font-size: 18px; color: var(--muted); margin: 0 0 34px; }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 26px 28px;
-    margin-bottom: 18px;
-  }
-  .card h2 {
-    font-family: "Unbounded", "Manrope", sans-serif;
-    font-weight: 600;
-    font-size: 15px;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-    color: var(--aqua);
-    margin: 0 0 16px;
-  }
-  ol { margin: 0; padding-left: 20px; }
-  li { margin-bottom: 12px; color: var(--muted); }
-  li:last-child { margin-bottom: 0; }
-  li b { color: var(--text); font-weight: 700; }
-  code {
-    font-family: ui-monospace, "SF Mono", Consolas, monospace;
-    font-size: 0.92em;
-    background: #0a1727;
-    border: 1px solid var(--line);
-    border-radius: 5px;
-    padding: 1px 6px;
-    color: var(--aqua);
-  }
-  a { color: var(--aqua); }
-  footer {
-    margin-top: 30px;
-    font-size: 14px;
-    color: #6e839a;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Football 101 | The Ultimate Beginner's Guide</title>
+    <!-- Single Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0a0f1d;
+            --bg-card: #131c31;
+            --bg-card-hover: #1c2844;
+            --surface-accent: #1e2d4a;
+            --accent-green: #10b981;
+            --accent-green-glow: rgba(16, 185, 129, 0.25);
+            --accent-gold: #f59e0b;
+            --accent-blue: #3b82f6;
+            --accent-red: #ef4444;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-subtle: #64748b;
+            --border-color: #243453;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --shadow-lg: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-family);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(59, 130, 246, 0.08) 0%, transparent 40%);
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: rgba(19, 28, 49, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 800;
+            font-size: 1.35rem;
+            letter-spacing: -0.02em;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, var(--accent-green), #059669);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px var(--accent-green-glow);
+        }
+
+        .badge-tag {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Hero Banner */
+        .hero {
+            max-width: 1200px;
+            margin: 2rem auto 1rem;
+            padding: 0 1.5rem;
+        }
+
+        .hero-card {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--surface-accent) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-card::after {
+            content: "🏈";
+            position: absolute;
+            right: -20px;
+            bottom: -30px;
+            font-size: 13rem;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.75rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(to right, #ffffff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            max-width: 1200px;
+            margin: 1.5rem auto 0;
+            padding: 0 1.5rem;
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .nav-tabs::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+
+        .tab-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+            background: var(--bg-card-hover);
+        }
+
+        .tab-btn.active {
+            background: var(--surface-accent);
+            color: var(--accent-green);
+            border-color: var(--border-color);
+            border-bottom-color: var(--surface-accent);
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main Content Container */
+        main {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            padding: 0 1.5rem;
+            width: 100%;
+            flex: 1;
+        }
+
+        .tab-content {
+            display: none;
+            background: var(--surface-accent);
+            border: 1px solid var(--border-color);
+            border-radius: 0 var(--radius-lg) var(--radius-lg) var(--radius-lg);
+            padding: 2rem;
+            animation: fadeIn 0.3s ease-in-out;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content Utilities & Components */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            border-color: rgba(16, 185, 129, 0.4);
+        }
+
+        /* Step Guide Component */
+        .step-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            align-items: flex-start;
+        }
+
+        .step-num {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            flex-shrink: 0;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .step-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .step-content p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Interactive Scoring Calculator */
+        .calc-box {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .form-group label span {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            background: var(--surface-accent);
+            border-radius: 3px;
+            outline: none;
+            accent-color: var(--accent-green);
+            cursor: pointer;
+        }
+
+        .scoring-results {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .score-pill {
+            background: var(--surface-accent);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .score-pill .label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .score-pill .value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-green);
+        }
+
+        /* Position Cheat Sheet */
+        .pos-badge {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .pos-qb { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); }
+        .pos-rb { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
+        .pos-wr { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
+        .pos-te { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4); }
+        .pos-flex { background: rgba(236, 72, 153, 0.2); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.4); }
+
+        .pos-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pos-card ul {
+            list-style-type: none;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .pos-card ul li {
+            margin-bottom: 0.4rem;
+            position: relative;
+            padding-left: 1.1rem;
+        }
+
+        .pos-card ul li::before {
+            content: "•";
+            color: var(--accent-green);
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        /* Trade Analyzer */
+        .trade-container {
+            display: grid;
+            grid-template-columns: 1fr 60px 1fr;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .trade-side {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+        }
+
+        .trade-side h4 {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        .player-select-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        select {
+            width: 100%;
+            background: var(--surface-accent);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.6rem 0.8rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .vs-circle {
+            background: var(--surface-accent);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: var(--accent-gold);
+            border: 1px solid var(--border-color);
+            margin: 0 auto;
+        }
+
+        .trade-feedback {
+            margin-top: 1.5rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .verdict-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .verdict-fair { background: rgba(16, 185, 129, 0.2); color: var(--accent-green); border: 1px solid var(--accent-green); }
+        .verdict-uneven { background: rgba(239, 68, 68, 0.2); color: var(--accent-red); border: 1px solid var(--accent-red); }
+
+        /* Quiz / Start-Sit Trainer */
+        .quiz-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .quiz-question {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .quiz-btn {
+            background: var(--surface-accent);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius-sm);
+            text-align: left;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .quiz-btn:hover {
+            border-color: var(--accent-green);
+            background: var(--bg-card-hover);
+        }
+
+        .quiz-feedback {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            display: none;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .quiz-feedback.correct {
+            display: block;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid var(--accent-green);
+            color: #d1fae5;
+        }
+
+        .quiz-feedback.incorrect {
+            display: block;
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid var(--accent-red);
+            color: #fee2e2;
+        }
+
+        .next-btn {
+            margin-top: 1rem;
+            background: var(--accent-green);
+            color: #000;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Glossary Search */
+        .search-bar {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 0.8rem 1.2rem;
+            border-radius: var(--radius-md);
+            color: var(--text-main);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            outline: none;
+        }
+
+        .search-bar:focus {
+            border-color: var(--accent-green);
+        }
+
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .term-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+        }
+
+        .term-card h4 {
+            color: var(--accent-green);
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .term-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            color: var(--text-subtle);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            background: var(--bg-card);
+            margin-top: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-card {
+                padding: 1.5rem;
+            }
+
+            .tab-content {
+                padding: 1.25rem;
+                border-radius: var(--radius-md);
+            }
+
+            .trade-container {
+                grid-template-columns: 1fr;
+            }
+
+            .vs-circle {
+                margin: 0.5rem auto;
+            }
+
+            .scoring-results {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-<main>
 
-  <span class="badge">Cal Poly Vibe Coding &middot; Session 01</span>
+    <!-- Top Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">🏈</div>
+                <span>Fantasy101</span>
+            </a>
+            <span class="badge-tag">Beginner's Edition</span>
+        </div>
+    </header>
 
-  <h1>It&rsquo;s live.</h1>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-card">
+            <h1>Master Your Fantasy Football League</h1>
+            <p>Don't be intimidated by draft day. Learn the basics, calculate scoring formats, analyze trades, and start setting winning lineups today.</p>
+        </div>
+    </section>
 
-  <!-- Step 5: change the name below to yours, then commit. -->
-  <p class="name">Built by Zander Wallpe</p>
+    <!-- Interactive Navigation Tabs -->
+    <div class="nav-tabs">
+        <button class="tab-btn active" onclick="switchTab('basics', this)">
+            <span>📘</span> How It Works
+        </button>
+        <button class="tab-btn" onclick="switchTab('scoring', this)">
+            <span>🧮</span> Scoring Calculator
+        </button>
+        <button class="tab-btn" onclick="switchTab('positions', this)">
+            <span>📋</span> Position Guide
+        </button>
+        <button class="tab-btn" onclick="switchTab('trade', this)">
+            <span>⚖️</span> Trade Evaluator
+        </button>
+        <button class="tab-btn" onclick="switchTab('quiz', this)">
+            <span>🎮</span> Start/Sit Trainer
+        </button>
+        <button class="tab-btn" onclick="switchTab('glossary', this)">
+            <span>📖</span> Terminology
+        </button>
+    </div>
 
-  <p class="lead">
-    This page is on the internet. Anyone you send this link to can open it,
-    on any device, right now. You made that happen in about five minutes.
-  </p>
+    <main>
+        <!-- TAB 1: BASICS / HOW IT WORKS -->
+        <div id="tab-basics" class="tab-content active">
+            <h2 class="section-title">The Fantasy Football Lifecycle</h2>
+            <p class="section-subtitle">You are acting as the General Manager (GM) and Head Coach of your custom NFL team. Here is how a full season flows:</p>
 
-  <div class="card">
-    <h2>Three things, in this order</h2>
-    <ol>
-      <li><b>Put your name on it.</b> Edit <code>index.html</code>, change
-        YOUR NAME HERE above, commit, refresh this page.</li>
-      <li><b>Submit this link.</b> Go to
-        <a href="https://www.calpolyvibecoding.com/">calpolyvibecoding.com</a>,
-        make an account, and paste this URL in. That is how you get counted,
-        and how Claude seats get assigned.</li>
-      <li><b>Then build.</b> Open Gemini, get a page, and replace this entire
-        file with it.</li>
-    </ol>
-  </div>
+            <div class="step-list">
+                <div class="step-item">
+                    <div class="step-num">1</div>
+                    <div class="step-content">
+                        <h3>The League Draft</h3>
+                        <p>Before the NFL season begins, you and your league mates draft real NFL players (QBs, RBs, WRs, TEs, K, DEF). Most leagues use a "Snake Draft" where picking order reverses each round (e.g., Pick 1 selects 1st in Rd 1, but 12th in Rd 2).</p>
+                    </div>
+                </div>
 
-  <div class="card">
-    <h2>How to replace this page</h2>
-    <ol>
-      <li>Copy what Gemini gives you with the <b>copy button</b> on the code
-        block. Do not click and drag.</li>
-      <li>Open <code>index.html</code> here and click the pencil icon.</li>
-      <li><b>Ctrl+A</b> (<b>Cmd+A</b> on Mac), then <b>Delete</b>. All of it.
-        Yes, really.</li>
-      <li>Paste, commit, refresh.</li>
-    </ol>
-  </div>
+                <div class="step-item">
+                    <div class="step-num">2</div>
+                    <div class="step-content">
+                        <h3>Weekly Head-to-Head Matchups</h3>
+                        <p>Every week during the NFL regular season, you set a starting lineup. As your real-life players accumulate yards, touchdowns, and catches on Sunday, they earn fantasy points for your team. The fantasy team with the most points wins that week's matchup!</p>
+                    </div>
+                </div>
 
-  <footer>
-    Nothing on this page is precious. It exists so the link has something to
-    show before you have something of your own.
-  </footer>
+                <div class="step-item">
+                    <div class="step-num">3</div>
+                    <div class="step-content">
+                        <h3>Waiver Wire & Free Agency</h3>
+                        <p>Did a star player get injured, or did an unknown backup suddenly explode for 3 touchdowns? You can pick up available unclaimed NFL players off the "Waiver Wire" each week to improve your roster.</p>
+                    </div>
+                </div>
 
-</main>
+                <div class="step-item">
+                    <div class="step-num">4</div>
+                    <div class="step-content">
+                        <h3>Trades & Lineup Decisions</h3>
+                        <p>Propose trades with other team managers to swap bench depth for top-tier starters. Swap out players who are on a "Bye Week" (when their real team isn't playing) or struggling with tough defensive matchups.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-num">5</div>
+                    <div class="step-content">
+                        <h3>The Playoffs & Championship</h3>
+                        <p>Around NFL Week 15-17, the top teams in your league advance to a bracket-style tournament. Win out to take home the trophy, bragging rights, and the league pot!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: SCORING CALCULATOR -->
+        <div id="tab-scoring" class="tab-content">
+            <h2 class="section-title">Interactive Scoring Calculator</h2>
+            <p class="section-subtitle">See how real-life stats convert into points across different league scoring formats (Standard, Half-PPR, Full PPR).</p>
+
+            <div class="grid-2">
+                <div class="calc-box">
+                    <h3 style="margin-bottom: 1.25rem;">Adjust Real Game Stats:</h3>
+
+                    <div class="form-group">
+                        <label>Rushing Yards: <span id="val-rushYds">75</span></label>
+                        <input type="range" id="input-rushYds" min="0" max="200" value="75" oninput="updateScoring()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Rushing Touchdowns: <span id="val-rushTd">1</span></label>
+                        <input type="range" id="input-rushTd" min="0" max="4" value="1" oninput="updateScoring()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Receptions (Catches): <span id="val-rec">6</span></label>
+                        <input type="range" id="input-rec" min="0" max="15" value="6" oninput="updateScoring()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Receiving Yards: <span id="val-recYds">60</span></label>
+                        <input type="range" id="input-recYds" min="0" max="200" value="60" oninput="updateScoring()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Receiving Touchdowns: <span id="val-recTd">0</span></label>
+                        <input type="range" id="input-recTd" min="0" max="3" value="0" oninput="updateScoring()">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fumbles Lost: <span id="val-fumble">0</span></label>
+                        <input type="range" id="input-fumble" min="0" max="3" value="0" oninput="updateScoring()">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="calc-box">
+                        <h3>Calculated Fantasy Points</h3>
+                        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.2rem;">PPR stands for <em>"Point Per Reception"</em>. It rewards players (especially RBs and WRs) who get targeted frequently.</p>
+
+                        <div class="scoring-results">
+                            <div class="score-pill">
+                                <div class="label">Standard</div>
+                                <div class="value" id="score-std">19.50</div>
+                            </div>
+                            <div class="score-pill">
+                                <div class="label">Half-PPR</div>
+                                <div class="value" id="score-half">22.50</div>
+                            </div>
+                            <div class="score-pill">
+                                <div class="label">Full PPR</div>
+                                <div class="value" id="score-full">25.50</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top: 1.25rem;">
+                        <h4 style="color:var(--accent-gold); margin-bottom:0.5rem;">💡 Key Rule Cheat Sheet:</h4>
+                        <ul style="font-size:0.85rem; color:var(--text-muted); line-height: 1.6; padding-left: 1.2rem;">
+                            <li><strong>10 Rushing/Receiving Yds</strong> = 1 Point (0.1 pt per yd)</li>
+                            <li><strong>25 Passing Yds</strong> = 1 Point (0.04 pt per yd)</li>
+                            <li><strong>Rushing/Receiving TD</strong> = 6 Points</li>
+                            <li><strong>Passing TD</strong> = 4 Points (usually)</li>
+                            <li><strong>Interception/Fumble Lost</strong> = -2 Points</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: POSITION GUIDE -->
+        <div id="tab-positions" class="tab-content">
+            <h2 class="section-title">Draft Strategy & Position Breakdown</h2>
+            <p class="section-subtitle">Understanding the roster roles and draft value priorities for beginners.</p>
+
+            <div class="grid-3">
+                <div class="card pos-card">
+                    <span class="pos-badge pos-qb">QB • Quarterback</span>
+                    <h3>The Field General</h3>
+                    <ul>
+                        <li><strong>Start:</strong> 1 in standard leagues</li>
+                        <li><strong>Scoring:</strong> Earns points through passing yards (25 yd = 1 pt) & passing TDs (4 pts).</li>
+                        <li><strong>Draft Tip:</strong> Dual-threat QBs who run (like Josh Allen or Lamar Jackson) are cheat codes because rushing yards are worth 2.5x more than passing yards!</li>
+                        <li><strong>Beginner Priority:</strong> Wait until middle rounds (Rounds 5-8).</li>
+                    </ul>
+                </div>
+
+                <div class="card pos-card">
+                    <span class="pos-badge pos-rb">RB • Running Back</span>
+                    <h3>The Workhorse</h3>
+                    <ul>
+                        <li><strong>Start:</strong> 2 per week</li>
+                        <li><strong>Scoring:</strong> Earns points from rushing attempts, yards, and touchdowns.</li>
+                        <li><strong>Draft Tip:</strong> High-volume RBs are scarce due to NFL injuries. RBs that also catch passes out of the backfield have immense PPR value.</li>
+                        <li><strong>Beginner Priority:</strong> Very High! Draft 2-3 RBs in your first 4 rounds.</li>
+                    </ul>
+                </div>
+
+                <div class="card pos-card">
+                    <span class="pos-badge pos-wr">WR • Wide Receiver</span>
+                    <h3>The Playmakers</h3>
+                    <ul>
+                        <li><strong>Start:</strong> 2 to 3 per week</li>
+                        <li><strong>Scoring:</strong> Driven by receptions, receiving yards, and receiving touchdowns.</li>
+                        <li><strong>Draft Tip:</strong> Target "WR1s" who are the main focal point of their NFL passing offense. High target volume leads to consistent points.</li>
+                        <li><strong>Beginner Priority:</strong> Very High! Balance your early picks between RBs and top WRs.</li>
+                    </ul>
+                </div>
+
+                <div class="card pos-card">
+                    <span class="pos-badge pos-te">TE • Tight End</span>
+                    <h3>The Mismatch</h3>
+                    <ul>
+                        <li><strong>Start:</strong> 1 per week</li>
+                        <li><strong>Scoring:</strong> Same as WRs (Catching yards/TDs).</li>
+                        <li><strong>Draft Tip:</strong> Only a few elite TEs score like top wide receivers (e.g., Travis Kelce, George Kittle). If you miss them, wait until late in the draft.</li>
+                        <li><strong>Beginner Priority:</strong> Medium/Low (unless drafting an elite top 3 TE).</li>
+                    </ul>
+                </div>
+
+                <div class="card pos-card">
+                    <span class="pos-badge pos-flex">FLEX • Flexible Slot</span>
+                    <h3>The Utility Player</h3>
+                    <ul>
+                        <li><strong>Start:</strong> 1 or 2 per week</li>
+                        <li><strong>Eligibility:</strong> Usually RB, WR, or TE.</li>
+                        <li><strong>Draft Tip:</strong> ALWAYS put a player with a late-afternoon or Sunday/Monday night game in your Flex slot to keep roster flexibility if someone gets hurt late!</li>
+                        <li><strong>Beginner Priority:</strong> N/A (Filled by your bench depth).</li>
+                    </ul>
+                </div>
+
+                <div class="card pos-card">
+                    <span class="pos-badge" style="background:rgba(255,255,255,0.1); color:#fff; border:1px solid #666;">K / DST • Kicker & Defense</span>
+                    <h3>Special Teams</h3>
+                    <ul>
+                        <li><strong>Start:</strong> 1 Kicker, 1 Team Defense</li>
+                        <li><strong>Scoring:</strong> K (Field goals 3-5 pts), DST (Sacks, interceptions, low points allowed).</li>
+                        <li><strong>Draft Tip:</strong> NEVER draft a Kicker or Defense early!</li>
+                        <li><strong>Beginner Priority:</strong> Draft them in your final 2 rounds of the draft.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: TRADE EVALUATOR -->
+        <div id="tab-trade" class="tab-content">
+            <h2 class="section-title">Beginner Trade Evaluator</h2>
+            <p class="section-subtitle">Not sure if a trade offer is fair? Select players on both sides to evaluate relative trade value.</p>
+
+            <div class="trade-container">
+                <div class="trade-side">
+                    <h4>Team A Gives:</h4>
+                    <div class="player-select-list">
+                        <select id="trade-a1" onchange="evaluateTrade()">
+                            <option value="95">Justin Jefferson (WR - Elite)</option>
+                            <option value="92" selected>Christian McCaffrey (RB - Elite)</option>
+                            <option value="85">Josh Allen (QB - Top Tier)</option>
+                            <option value="78">Mike Evans (WR - Solid Starter)</option>
+                            <option value="65">Dallas Goedert (TE - Mid Tier)</option>
+                            <option value="40">Bench Player / Waiver Wire</option>
+                        </select>
+                        <select id="trade-a2" onchange="evaluateTrade()">
+                            <option value="0" selected>-- None (Single Player) --</option>
+                            <option value="80">Isiah Pacheco (RB - Solid Starter)</option>
+                            <option value="72">Chris Godwin (WR - Solid Starter)</option>
+                            <option value="40">Bench Player / Backup</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="vs-circle">VS</div>
+
+                <div class="trade-side">
+                    <h4>Team B Gives:</h4>
+                    <div class="player-select-list">
+                        <select id="trade-b1" onchange="evaluateTrade()">
+                            <option value="95">Justin Jefferson (WR - Elite)</option>
+                            <option value="92">Christian McCaffrey (RB - Elite)</option>
+                            <option value="85" selected>Josh Allen (QB - Top Tier)</option>
+                            <option value="78">Mike Evans (WR - Solid Starter)</option>
+                            <option value="65">Dallas Goedert (TE - Mid Tier)</option>
+                            <option value="40">Bench Player / Waiver Wire</option>
+                        </select>
+                        <select id="trade-b2" onchange="evaluateTrade()">
+                            <option value="0">-- None (Single Player) --</option>
+                            <option value="80">Isiah Pacheco (RB - Solid Starter)</option>
+                            <option value="72" selected>Chris Godwin (WR - Solid Starter)</option>
+                            <option value="40">Bench Player / Backup</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trade-feedback" id="trade-result">
+                <span class="verdict-badge verdict-fair" id="trade-verdict">FAIR TRADE</span>
+                <p id="trade-details" style="font-size:0.95rem; color:var(--text-muted); margin-top:0.4rem;">
+                    Both sides receive similar overall value. This trade makes sense if both managers are filling positional needs.
+                </p>
+            </div>
+        </div>
+
+        <!-- TAB 5: START/SIT TRAINER -->
+        <div id="tab-quiz" class="tab-content">
+            <h2 class="section-title">Start 'Em or Sit 'Em Trainer</h2>
+            <p class="section-subtitle">Test your decision-making skills with real fantasy scenario puzzles.</p>
+
+            <div class="quiz-box">
+                <div class="quiz-question" id="quiz-q">Loading scenario...</div>
+                <div class="quiz-options" id="quiz-options"></div>
+                <div class="quiz-feedback" id="quiz-feedback"></div>
+                <button class="next-btn" id="next-btn" onclick="nextQuestion()">Next Scenario ➔</button>
+            </div>
+        </div>
+
+        <!-- TAB 6: TERMINOLOGY GLOSSARY -->
+        <div id="tab-glossary" class="tab-content">
+            <h2 class="section-title">Fantasy Football Glossary</h2>
+            <p class="section-subtitle">Search common terms, slang, and acronyms used by fantasy players.</p>
+
+            <input type="text" class="search-bar" id="glossary-search" placeholder="🔍 Search terms (e.g. PPR, Handcuff, Sleeper, FAAB)..." onkeyup="filterGlossary()">
+
+            <div class="glossary-grid" id="glossary-list">
+                <div class="term-card">
+                    <h4>PPR (Point Per Reception)</h4>
+                    <p>A scoring format where players earn 1 full point for simply catching a pass, regardless of yardage gained.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Handcuff</h4>
+                    <p>Drafting or holding the backup running back to your star starter as insurance in case the starter gets injured.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Sleeper</h4>
+                    <p>A player who is undervalued or flys under the radar during drafts, but has high upside potential to breakout.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Bust</h4>
+                    <p>A player drafted high in early rounds who drastically underperforms due to poor play, bad team offense, or injuries.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Waiver Wire</h4>
+                    <p>The pool of unowned free agent players. Claims are usually processed mid-week based on priority or FAAB bidding.</p>
+                </div>
+                <div class="term-card">
+                    <h4>FAAB (Free Agent Acquisition Budget)</h4>
+                    <p>A bidding system where every team gets a seasonal virtual dollar budget (e.g., $100) to bid blind on waiver players.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Stream / Streaming</h4>
+                    <p>Targeting players (especially QBs, Kickers, and Defenses) on a week-to-week basis based solely on good matchups rather than holding one player all season.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Target Share</h4>
+                    <p>The percentage of a team's total passing attempts that are thrown to a specific receiver.</p>
+                </div>
+                <div class="term-card">
+                    <h4>Floor vs Ceiling</h4>
+                    <p><strong>Floor:</strong> The minimum predictable points a player will score. <strong>Ceiling:</strong> The maximum potential points if everything goes right.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Fantasy Football 101 • Built for Beginners • Master your league and win your championship!</p>
+    </footer>
+
+    <!-- Interactive Logic Script -->
+    <script>
+        // Tab Switcher
+        function switchTab(tabId, element) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+
+            document.getElementById('tab-' + tabId).classList.add('active');
+            element.classList.add('active');
+        }
+
+        // Scoring Calculator Logic
+        function updateScoring() {
+            const rushYds = parseInt(document.getElementById('input-rushYds').value);
+            const rushTd = parseInt(document.getElementById('input-rushTd').value);
+            const rec = parseInt(document.getElementById('input-rec').value);
+            const recYds = parseInt(document.getElementById('input-recYds').value);
+            const recTd = parseInt(document.getElementById('input-recTd').value);
+            const fumble = parseInt(document.getElementById('input-fumble').value);
+
+            document.getElementById('val-rushYds').innerText = rushYds;
+            document.getElementById('val-rushTd').innerText = rushTd;
+            document.getElementById('val-rec').innerText = rec;
+            document.getElementById('val-recYds').innerText = recYds;
+            document.getElementById('val-recTd').innerText = recTd;
+            document.getElementById('val-fumble').innerText = fumble;
+
+            // Base Yardage & TDs
+            const basePoints = (rushYds * 0.1) + (rushTd * 6) + (recYds * 0.1) + (recTd * 6) - (fumble * 2);
+
+            const scoreStd = basePoints;
+            const scoreHalf = basePoints + (rec * 0.5);
+            const scoreFull = basePoints + (rec * 1.0);
+
+            document.getElementById('score-std').innerText = scoreStd.toFixed(2);
+            document.getElementById('score-half').innerText = scoreHalf.toFixed(2);
+            document.getElementById('score-full').innerText = scoreFull.toFixed(2);
+        }
+
+        // Trade Evaluator Logic
+        function evaluateTrade() {
+            const a1 = parseInt(document.getElementById('trade-a1').value);
+            const a2 = parseInt(document.getElementById('trade-a2').value);
+            const b1 = parseInt(document.getElementById('trade-b1').value);
+            const b2 = parseInt(document.getElementById('trade-b2').value);
+
+            const totalA = a1 + a2;
+            const totalB = b1 + b2;
+
+            const diff = Math.abs(totalA - totalB);
+            const verdictEl = document.getElementById('trade-verdict');
+            const detailsEl = document.getElementById('trade-details');
+
+            if (diff <= 12) {
+                verdictEl.className = "verdict-badge verdict-fair";
+                verdictEl.innerText = "FAIR & BALANCED TRADE";
+                detailsEl.innerText = "This is a well-balanced trade. Both managers are exchanging comparable value.";
+            } else if (totalA > totalB) {
+                verdictEl.className = "verdict-badge verdict-uneven";
+                verdictEl.innerText = "TEAM A HAS ADVANTAGE";
+                detailsEl.innerText = `Team A is receiving significantly more value (+${diff} pts). Team B might be overpaying or giving away too much talent.`;
+            } else {
+                verdictEl.className = "verdict-badge verdict-uneven";
+                verdictEl.innerText = "TEAM B HAS ADVANTAGE";
+                detailsEl.innerText = `Team B is receiving significantly more value (+${diff} pts). Team A is likely taking a loss in overall production.`;
+            }
+        }
+
+        // Quiz / Start-Sit Logic
+        const quizData = [
+            {
+                question: "Scenario 1: You need a WR in your FLEX spot. Player A is playing against the #1 ranked pass defense in bad weather. Player B is playing against a bottom-ranked defense in a warm dome stadium. Who do you start?",
+                options: [
+                    { text: "Start Player B (Favorable matchup & dome environment)", correct: true },
+                    { text: "Start Player A (Always play in bad weather)", correct: false }
+                ],
+                explanation: "Correct! Matchups and environmental factors matter. Pass offenses perform much better in domes compared to rain/snow against top-tier defenses."
+            },
+            {
+                question: "Scenario 2: It is Round 14 of your draft. Should you draft a backup Kicker or a high-upside backup Running Back?",
+                options: [
+                    { text: "Backup Kicker to cover your Bye Week", correct: false },
+                    { text: "High-upside backup Running Back", correct: true }
+                ],
+                explanation: "Correct! You almost NEVER need two kickers on your roster. Roster slots are better spent on running backs who could become stars if the starter gets injured."
+            },
+            {
+                question: "Scenario 3: Your starting QB is playing on Thursday Night Football. Where should you place him in your lineup?",
+                options: [
+                    { text: "In your QB starting slot", correct: true },
+                    { text: "In your FLEX slot", correct: false }
+                ],
+                explanation: "Correct! NEVER put Thursday night players in your FLEX slot. Keep your FLEX open for Sunday/Monday in case late injury updates occur!"
+            }
+        ];
+
+        let currentQIndex = 0;
+
+        function loadQuestion() {
+            const q = quizData[currentQIndex];
+            document.getElementById('quiz-q').innerText = q.question;
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = '';
+
+            const feedbackEl = document.getElementById('quiz-feedback');
+            feedbackEl.className = 'quiz-feedback';
+            feedbackEl.style.display = 'none';
+            document.getElementById('next-btn').style.display = 'none';
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-btn';
+                btn.innerText = opt.text;
+                btn.onclick = () => selectOption(opt.correct, q.explanation);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function selectOption(isCorrect, explanation) {
+            const feedbackEl = document.getElementById('quiz-feedback');
+            feedbackEl.style.display = 'block';
+
+            if (isCorrect) {
+                feedbackEl.className = 'quiz-feedback correct';
+                feedbackEl.innerHTML = `<strong>✅ Correct!</strong> ${explanation}`;
+            } else {
+                feedbackEl.className = 'quiz-feedback incorrect';
+                feedbackEl.innerHTML = `<strong>❌ Not quite.</strong> ${explanation}`;
+            }
+
+            document.querySelectorAll('.quiz-btn').forEach(b => b.disabled = true);
+            document.getElementById('next-btn').style.display = 'inline-block';
+        }
+
+        function nextQuestion() {
+            currentQIndex = (currentQIndex + 1) % quizData.length;
+            loadQuestion();
+        }
+
+        // Glossary Filter Search
+        function filterGlossary() {
+            const query = document.getElementById('glossary-search').value.toLowerCase();
+            const cards = document.querySelectorAll('#glossary-list .term-card');
+
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        // Initialize default states on page load
+        window.onload = function() {
+            updateScoring();
+            evaluateTrade();
+            loadQuestion();
+        }
+    </script>
 </body>
 </html>
