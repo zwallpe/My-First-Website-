@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gridiron IQ - Fantasy Football Guide & Tools</title>
+    <title>FantasyIQ - Master Fantasy Football</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --navy-dark: #0A1128;
-            --navy-primary: #1C2541;
-            --blue-accent: #00509E;
-            --red-primary: #D90429;
-            --red-hover: #EF233C;
-            --white-pure: #FFFFFF;
-            --bg-light: #F8F9FA;
-            --border-color: #E9ECEF;
-            --text-dark: #2B2D42;
+            --primary-blue: #0A192F;
+            --accent-red: #D90429;
+            --bright-blue: #0056B3;
+            --light-bg: #F8F9FA;
+            --card-bg: #FFFFFF;
+            --text-dark: #1A1A1A;
             --text-muted: #6C757D;
+            --border-color: #E9ECEF;
+            --white: #FFFFFF;
         }
 
         * {
@@ -29,15 +28,18 @@
         }
 
         body {
-            background-color: var(--bg-light);
+            background-color: var(--light-bg);
             color: var(--text-dark);
-            line-height: 1.5;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
-            background-color: var(--navy-dark);
-            border-bottom: 4px solid var(--red-primary);
-            padding: 1rem 2rem;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-bottom: 4px solid var(--accent-red);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -49,21 +51,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 2rem;
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: 800;
-            color: var(--white-pure);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: var(--white);
+            text-decoration: none;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
         .logo span {
-            color: var(--red-primary);
+            color: var(--accent-red);
         }
 
         nav ul {
@@ -73,44 +75,38 @@
         }
 
         nav button {
-            background: transparent;
+            background: none;
             border: none;
-            color: var(--white-pure);
-            padding: 0.5rem 1rem;
+            color: var(--white);
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
             cursor: pointer;
             border-radius: 4px;
             transition: all 0.2s ease;
         }
 
         nav button:hover, nav button.active {
-            background-color: var(--blue-accent);
-            color: var(--white-pure);
+            background-color: var(--bright-blue);
+            color: var(--white);
         }
 
-        .container {
+        main {
             max-width: 1200px;
             margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        .view-section {
-            display: none;
-        }
-
-        .view-section.active {
-            display: block;
+            padding: 0 2rem;
+            flex: 1;
+            width: 100%;
         }
 
         .hero {
-            background: linear-gradient(135deg, var(--navy-primary) 0%, var(--navy-dark) 100%);
-            color: var(--white-pure);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--bright-blue) 100%);
+            color: var(--white);
             padding: 3rem 2rem;
             border-radius: 12px;
-            margin-bottom: 2rem;
             text-align: center;
-            border-top: 4px solid var(--red-primary);
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .hero h1 {
@@ -123,154 +119,192 @@
             font-size: 1.1rem;
             max-width: 700px;
             margin: 0 auto 1.5rem auto;
-            color: #E0E6ED;
+            opacity: 0.9;
         }
 
-        .cta-btn {
-            background-color: var(--red-primary);
-            color: var(--white-pure);
+        .hero .espn-link {
+            display: inline-block;
+            background-color: var(--accent-red);
+            color: var(--white);
+            text-decoration: none;
             padding: 0.75rem 1.5rem;
             font-weight: 700;
-            border: none;
             border-radius: 6px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.2s ease;
+            transition: background 0.2s;
         }
 
-        .cta-btn:hover {
-            background-color: var(--red-hover);
+        .hero .espn-link:hover {
+            background-color: #B8001F;
         }
 
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         .card {
-            background: var(--white-pure);
-            border: 1px solid var(--border-color);
+            background: var(--card-bg);
             border-radius: 8px;
             padding: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
         }
 
-        .card h3 {
-            color: var(--navy-primary);
-            margin-bottom: 0.75rem;
-            font-size: 1.25rem;
+        .card h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        select, input, button.action-btn {
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        select, input {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        button.action-btn {
+            background-color: var(--accent-red);
+            color: var(--white);
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button.action-btn:hover {
+            background-color: #B8001F;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            background: var(--white-pure);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+            margin-top: 1rem;
         }
 
         th, td {
-            padding: 1rem;
             text-align: left;
+            padding: 0.75rem 1rem;
             border-bottom: 1px solid var(--border-color);
         }
 
         th {
-            background-color: var(--navy-primary);
-            color: var(--white-pure);
+            background-color: var(--primary-blue);
+            color: var(--white);
             font-weight: 600;
         }
 
-        tr:hover {
-            background-color: #F1F5F9;
+        tr:nth-child(even) {
+            background-color: #F8F9FA;
         }
 
         .badge {
+            display: inline-block;
             padding: 0.25rem 0.5rem;
             border-radius: 4px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 700;
+            color: var(--white);
         }
 
-        .badge-qb { background: #E1F5FE; color: #0288D1; }
-        .badge-rb { background: #E8F5E9; color: #388E3C; }
-        .badge-wr { background: #FFF3E0; color: #F57C00; }
-        .badge-te { background: #EDE7F6; color: #512DA8; }
+        .badge-qb { background-color: #D90429; }
+        .badge-rb { background-color: #0056B3; }
+        .badge-wr { background-color: #2B2D42; }
+        .badge-te { background-color: #8D99AE; }
 
-        .trade-container, .draft-container {
+        .trade-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
         @media (max-width: 768px) {
-            .trade-container, .draft-container {
+            .trade-container {
                 grid-template-columns: 1fr;
             }
         }
 
-        .select-box {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            font-size: 1rem;
-            margin-top: 0.5rem;
-            margin-bottom: 1rem;
+        .trade-box {
+            background: var(--light-bg);
+            border: 2px dashed var(--border-color);
+            padding: 1rem;
+            border-radius: 8px;
         }
 
-        .meter-bar {
-            height: 12px;
-            background-color: var(--border-color);
-            border-radius: 6px;
-            overflow: hidden;
-            margin-top: 0.5rem;
-        }
-
-        .meter-fill {
-            height: 100%;
-            background-color: var(--blue-accent);
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        .trade-verdict {
-            grid-column: 1 / -1;
-            background: var(--white-pure);
+        .trade-result {
+            margin-top: 1.5rem;
             padding: 1.5rem;
             border-radius: 8px;
             text-align: center;
-            border: 2px solid var(--navy-primary);
-        }
-
-        .verdict-text {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-top: 0.5rem;
+            display: none;
         }
 
-        .draft-log {
-            max-height: 300px;
-            overflow-y: auto;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 0.5rem;
-            background: var(--bg-light);
+        .trade-result.win {
+            background-color: #D4EDDA;
+            color: #155724;
+            border: 1px solid #C3E6CB;
         }
 
-        .draft-item {
-            padding: 0.5rem;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
+        .trade-result.loss {
+            background-color: #F8D7DA;
+            color: #721C24;
+            border: 1px solid #F5C6CB;
+        }
+
+        .trade-result.even {
+            background-color: #CCE5FF;
+            color: #004085;
+            border: 1px solid #B8DAFF;
+        }
+
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: auto;
+            border-top: 4px solid var(--accent-red);
             font-size: 0.9rem;
         }
 
-        .draft-item:last-child {
-            border-bottom: none;
+        .mock-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .mock-list li {
+            padding: 0.5rem 1rem;
+            background: var(--light-bg);
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
         }
     </style>
 </head>
@@ -278,236 +312,34 @@
 
     <header>
         <div class="nav-container">
-            <div class="logo">Gridiron<span>IQ</span></div>
+            <a href="#" class="logo">Fantasy<span>IQ</span></a>
             <nav>
                 <ul>
-                    <li><button class="nav-btn active" onclick="switchTab('learn')">Learn Basics</button></li>
-                    <li><button class="nav-btn" onclick="switchTab('rankings')">2026 Rankings</button></li>
-                    <li><button class="nav-btn" onclick="switchTab('mock')">Mock Draft</button></li>
-                    <li><button class="nav-btn" onclick="switchTab('trade')">Trade Analyzer</button></li>
+                    <li><button class="nav-btn active" onclick="switchTab('basics')">Basics</button></li>
+                    <li><button class="nav-btn" onclick="switchTab('draft-guide')">Draft Guide</button></li>
+                    <li><button class="nav-btn" onclick="switchTab('mock-draft')">Mock Draft</button></li>
+                    <li><button class="nav-btn" onclick="switchTab('trade-analyzer')">Trade Analyzer</button></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <div class="container">
-
-        <div id="learn" class="view-section active">
-            <div class="hero">
-                <h1>Welcome to Fantasy Football</h1>
-                <p>Learn the basics, draft your dream team, and manage your roster like an NFL General Manager.</p>
-                <button class="cta-btn" onclick="switchTab('mock')">Try a Quick Mock Draft</button>
-            </div>
-
-            <div class="grid-3">
-                <div class="card">
-                    <h3>1. Draft Your Team</h3>
-                    <p>Every fall, fans join leagues and hold a "draft" to pick real NFL players (QBs, RBs, WRs, TEs, Kickers, and Defenses) to build their custom roster.</p>
-                </div>
-                <div class="card">
-                    <h3>2. Matchup Each Week</h3>
-                    <p>Your team competes 1-on-1 against another manager in your league. When your real-life players score yards and touchdowns in actual NFL games, your team earns fantasy points.</p>
-                </div>
-                <div class="card">
-                    <h3>3. Win Your League</h3>
-                    <p>Set your starting lineup each week, make strategic trades, and pickup free agents. The managers with the best records make the playoffs to fight for the Championship!</p>
-                </div>
-            </div>
+    <main>
+        <div class="hero">
+            <h1>Master Fantasy Football with Confidence</h1>
+            <p>Designed specifically for beginners. Learn the rules, explore current ESPN player rankings, practice drafting, and evaluate trades effortlessly.</p>
+            <a href="https://fantasy.espn.com/football/players/projections" target="_blank" class="espn-link">View Live ESPN Projections ↗</a>
         </div>
 
-        <div id="rankings" class="view-section">
-            <h2 style="margin-bottom: 1rem; color: var(--navy-dark);">2026 Projected Consensus Rankings</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Player Name</th>
-                        <th>Position</th>
-                        <th>Team</th>
-                        <th>Tier</th>
-                    </tr>
-                </thead>
-                <tbody id="rankings-table">
-                    </tbody>
-            </table>
-        </div>
-
-        <div id="mock" class="view-section">
-            <h2 style="margin-bottom: 1rem; color: var(--navy-dark);">Mock Draft Simulator</h2>
-            <div class="draft-container">
+        <section id="basics" class="tab-content active">
+            <div class="grid-2">
                 <div class="card">
-                    <h3>Available Players</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Pick the best player available for your team.</p>
-                    <select id="draft-select" class="select-box"></select>
-                    <button class="cta-btn" style="width: 100%;" onclick="makeDraftPick()">Draft Player</button>
+                    <h2>What is Fantasy Football?</h2>
+                    <p>Fantasy Football is a game where you act as the general manager of a virtual team made up of real NFL players. Each week, your players earn points based on their actual performance in real-life NFL games.</p>
                 </div>
-
                 <div class="card">
-                    <h3>Draft History</h3>
-                    <div id="draft-log" class="draft-log">
-                        <div class="draft-item" style="color: var(--text-muted);">Draft has not started yet...</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="trade" class="view-section">
-            <h2 style="margin-bottom: 1rem; color: var(--navy-dark);">NFL Trade Analyzer</h2>
-            <div class="trade-container">
-                <div class="card">
-                    <h3 style="color: var(--blue-accent);">Side A Gets</h3>
-                    <select id="trade-a" class="select-box" onchange="analyzeTrade()"></select>
-                    <div>
-                        <span style="font-size: 0.9rem; font-weight: 600;">Player Value Rating</span>
-                        <div class="meter-bar"><div id="meter-a" class="meter-fill"></div></div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3 style="color: var(--red-primary);">Side B Gets</h3>
-                    <select id="trade-b" class="select-box" onchange="analyzeTrade()"></select>
-                    <div>
-                        <span style="font-size: 0.9rem; font-weight: 600;">Player Value Rating</span>
-                        <div class="meter-bar"><div id="meter-b" class="meter-fill"></div></div>
-                    </div>
-                </div>
-
-                <div class="trade-verdict">
-                    <h3>Trade Breakdown</h3>
-                    <div id="trade-verdict-text" class="verdict-text">Select players above to compare value.</div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <script>
-        const activePlayers = [
-            { id: 1, name: "Patrick Mahomes", pos: "QB", team: "KC", val: 98 },
-            { id: 2, name: "Justin Jefferson", pos: "WR", team: "MIN", val: 97 },
-            { id: 3, name: "Christian McCaffrey", pos: "RB", team: "SF", val: 96 },
-            { id: 4, name: "CeeDee Lamb", pos: "WR", team: "DAL", val: 95 },
-            { id: 5, name: "Josh Allen", pos: "QB", team: "BUF", val: 95 },
-            { id: 6, name: "Ja'Marr Chase", pos: "WR", team: "CIN", val: 94 },
-            { id: 7, name: "Breece Hall", pos: "RB", team: "NYJ", val: 92 },
-            { id: 8, name: "Travis Kelce", pos: "TE", team: "KC", val: 89 },
-            { id: 9, name: "A.J. Brown", pos: "WR", team: "PHI", val: 90 },
-            { id: 10, name: "Lamar Jackson", pos: "QB", team: "BAL", val: 93 }
-        ];
-
-        function switchTab(tabId) {
-            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
-            
-            document.getElementById(tabId).classList.add('active');
-            event.target.classList.add('active');
-        }
-
-        function populateRankings() {
-            const tbody = document.getElementById('rankings-table');
-            tbody.innerHTML = '';
-            
-            activePlayers.forEach((player, index) => {
-                const tier = index < 3 ? "Tier 1 (Elite)" : (index < 7 ? "Tier 2 (Pro)" : "Tier 3 (Solid)");
-                const badgeClass = `badge-${player.pos.toLowerCase()}`;
-                
-                tbody.innerHTML += `
-                    <tr>
-                        <td><strong>#${index + 1}</strong></td>
-                        <td><strong>${player.name}</strong></td>
-                        <td><span class="badge ${badgeClass}">${player.pos}</span></td>
-                        <td>${player.team}</td>
-                        <td>${tier}</td>
-                    </tr>
-                `;
-            });
-        }
-
-        function initDraft() {
-            const select = document.getElementById('draft-select');
-            select.innerHTML = '';
-            activePlayers.forEach(p => {
-                select.innerHTML += `<option value="${p.id}">${p.name} (${p.pos} - ${p.team})</option>`;
-            });
-        }
-
-        let currentPick = 1;
-        function makeDraftPick() {
-            const select = document.getElementById('draft-select');
-            if (select.options.length === 0) return;
-
-            const selectedId = parseInt(select.value);
-            const player = activePlayers.find(p => p.id === selectedId);
-            const log = document.getElementById('draft-log');
-
-            if (currentPick === 1) log.innerHTML = '';
-
-            log.innerHTML += `
-                <div class="draft-item">
-                    <span><strong>Pick 1.${currentPick}</strong> - ${player.name}</span>
-                    <span class="badge badge-${player.pos.toLowerCase()}">${player.pos}</span>
-                </div>
-            `;
-
-            select.querySelector(`option[value="${selectedId}"]`).remove();
-            currentPick++;
-        }
-
-        function initTradeAnalyzer() {
-            const selectA = document.getElementById('trade-a');
-            const selectB = document.getElementById('trade-b');
-            
-            let options = '<option value="">Select a player...</option>';
-            activePlayers.forEach(p => {
-                options += `<option value="${p.id}">${p.name} (${p.pos})</option>`;
-            });
-
-            selectA.innerHTML = options;
-            selectB.innerHTML = options;
-        }
-
-        function analyzeTrade() {
-            const valA = parseInt(document.getElementById('trade-a').value);
-            const valB = parseInt(document.getElementById('trade-b').value);
-            
-            const meterA = document.getElementById('meter-a');
-            const meterB = document.getElementById('meter-b');
-            const verdict = document.getElementById('trade-verdict-text');
-
-            const playerA = activePlayers.find(p => p.id === valA);
-            const playerB = activePlayers.find(p => p.id === valB);
-
-            if (!playerA || !playerB) {
-                meterA.style.width = playerA ? `${playerA.val}%` : '0%';
-                meterB.style.width = playerB ? `${playerB.val}%` : '0%';
-                verdict.innerText = "Select players on both sides to evaluate.";
-                verdict.style.color = "var(--text-dark)";
-                return;
-            }
-
-            meterA.style.width = `${playerA.val}%`;
-            meterB.style.width = `${playerB.val}%`;
-
-            const diff = playerA.val - playerB.val;
-
-            if (Math.abs(diff) <= 3) {
-                verdict.innerText = "Fair Trade! Both sides receive equal value.";
-                verdict.style.color = "green";
-            } else if (diff > 3) {
-                verdict.innerText = `Side A wins the trade! (${playerA.name} has higher value)`;
-                verdict.style.color = "var(--blue-accent)";
-            } else {
-                verdict.innerText = `Side B wins the trade! (${playerB.name} has higher value)`;
-                verdict.style.color = "var(--red-primary)";
-            }
-        }
-
-        // Initialize on load
-        window.onload = function() {
-            populateRankings();
-            initDraft();
-            initTradeAnalyzer();
-        };
-    </script>
-</body>
-</html>
+                    <h2>How You Win Points</h2>
+                    <ul>
+                        <li><strong>Passing Yards:</strong> 1 point per 25 yards</li>
+                        <li><strong>Passing Touchdown:</strong> 4 points</li>
+                        <li><strong>Rushing / Receiving Yards:</strong> 1
