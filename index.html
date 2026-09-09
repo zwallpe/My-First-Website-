@@ -3,343 +3,1643 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FantasyIQ - Master Fantasy Football</title>
+    <title>Gridiron Genius | Fantasy Football Starter Kit</title>
+    <!-- Google Font: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary-blue: #0A192F;
-            --accent-red: #D90429;
-            --bright-blue: #0056B3;
-            --light-bg: #F8F9FA;
-            --card-bg: #FFFFFF;
-            --text-dark: #1A1A1A;
-            --text-muted: #6C757D;
-            --border-color: #E9ECEF;
-            --white: #FFFFFF;
+            --navy-dark: #0a1428;
+            --navy-main: #102a43;
+            --navy-light: #243b53;
+            --red-primary: #d92525;
+            --red-hover: #b91c1c;
+            --red-accent: #ff4d4d;
+            --blue-accent: #2563eb;
+            --white-pure: #ffffff;
+            --bg-offwhite: #f4f7fa;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --success-green: #10b981;
+            --warning-gold: #f59e0b;
+            --qb-color: #ef4444;
+            --rb-color: #2563eb;
+            --wr-color: #10b981;
+            --te-color: #f59e0b;
+            --k-color: #8b5cf6;
+            --dst-color: #64748b;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --shadow-subtle: 0 4px 12px rgba(10, 20, 40, 0.05);
+            --shadow-hover: 0 10px 25px rgba(10, 20, 40, 0.12);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
         }
 
         body {
-            background-color: var(--light-bg);
-            color: var(--text-dark);
+            background-color: var(--bg-offwhite);
+            color: var(--text-main);
             line-height: 1.6;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
         }
 
         header {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            border-bottom: 4px solid var(--accent-red);
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-main) 100%);
+            color: var(--white-pure);
+            border-bottom: 4px solid var(--red-primary);
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
 
-        .nav-container {
-            max-width: 1200px;
+        .header-container {
+            max-width: 1280px;
             margin: 0 auto;
+            padding: 1rem 1.5rem;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--white);
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
             text-decoration: none;
+            color: var(--white-pure);
+        }
+
+        .logo-icon {
+            background: var(--red-primary);
+            color: var(--white-pure);
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 800;
+            box-shadow: 0 2px 8px rgba(217, 37, 37, 0.4);
+        }
+
+        .logo-text h1 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
+        .logo-text span {
+            color: var(--red-accent);
+        }
+
+        .logo-subtitle {
+            font-size: 0.75rem;
+            color: #9fb3c8;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+        }
+
+        nav {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.25rem;
+            max-width: 100%;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            color: #bcccdc;
+            padding: 0.6rem 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        .logo span {
-            color: var(--accent-red);
+        .nav-btn:hover {
+            color: var(--white-pure);
+            background: rgba(255, 255, 255, 0.08);
         }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 1rem;
-        }
-
-        nav button {
-            background: none;
-            border: none;
-            color: var(--white);
-            font-weight: 600;
-            font-size: 1rem;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-        }
-
-        nav button:hover, nav button.active {
-            background-color: var(--bright-blue);
-            color: var(--white);
+        .nav-btn.active {
+            color: var(--white-pure);
+            background: var(--red-primary);
+            box-shadow: 0 2px 8px rgba(217, 37, 37, 0.3);
         }
 
         main {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
             flex: 1;
+            max-width: 1280px;
             width: 100%;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--bright-blue) 100%);
-            color: var(--white);
-            padding: 3rem 2rem;
-            border-radius: 12px;
-            text-align: center;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 1.5rem auto;
-            opacity: 0.9;
-        }
-
-        .hero .espn-link {
-            display: inline-block;
-            background-color: var(--accent-red);
-            color: var(--white);
-            text-decoration: none;
-            padding: 0.75rem 1.5rem;
-            font-weight: 700;
-            border-radius: 6px;
-            transition: background 0.2s;
-        }
-
-        .hero .espn-link:hover {
-            background-color: #B8001F;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
         }
 
         .tab-content {
             display: none;
+            animation: fadeIn 0.3s ease-in-out;
         }
 
         .tab-content.active {
             display: block;
         }
 
-        .card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 1.5rem;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            margin-bottom: 1.5rem;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .card h2 {
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 0.5rem;
+        .hero-banner {
+            background: linear-gradient(135deg, var(--navy-main) 0%, var(--navy-light) 100%);
+            color: var(--white-pure);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-subtle);
+            border-left: 6px solid var(--red-primary);
         }
 
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+        .hero-banner h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
         }
 
-        .controls {
+        .hero-banner p {
+            color: #bcccdc;
+            font-size: 1.05rem;
+            max-width: 750px;
+        }
+
+        .hero-pills {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
             flex-wrap: wrap;
         }
 
-        select, input, button.action-btn {
-            padding: 0.75rem 1rem;
+        .hero-pill {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.825rem;
+            font-weight: 600;
+            color: #e4e7eb;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Cards & Section Containers */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-subtle);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--bg-offwhite);
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--navy-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .step-number {
+            background: var(--navy-main);
+            color: var(--white-pure);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-red { background: #fee2e2; color: #991b1b; }
+        .badge-blue { background: #dbeafe; color: #1e40af; }
+        .badge-green { background: #d1fae5; color: #065f46; }
+        .badge-gold { background: #fef3c7; color: #92400e; }
+
+        .position-badge {
+            color: var(--white-pure);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            min-width: 42px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .pos-QB { background-color: var(--qb-color); }
+        .pos-RB { background-color: var(--rb-color); }
+        .pos-WR { background-color: var(--wr-color); }
+        .pos-TE { background-color: var(--te-color); }
+        .pos-K { background-color: var(--k-color); }
+        .pos-DST { background-color: var(--dst-color); }
+
+        /* Interactive Scoring Calculator in 101 */
+        .calc-box {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            margin-top: 1rem;
+        }
+
+        .calc-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            gap: 1rem;
+        }
+
+        .calc-row label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .calc-row input {
+            width: 90px;
+            padding: 0.4rem 0.6rem;
             border: 1px solid var(--border-color);
             border-radius: 6px;
-            font-size: 1rem;
-            outline: none;
-        }
-
-        select, input {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        button.action-btn {
-            background-color: var(--accent-red);
-            color: var(--white);
+            font-size: 0.95rem;
             font-weight: 700;
-            border: none;
-            cursor: pointer;
-            transition: background 0.2s;
+            text-align: center;
         }
 
-        button.action-btn:hover {
-            background-color: #B8001F;
+        .calc-result {
+            background: var(--navy-dark);
+            color: var(--white-pure);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .calc-result-val {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--red-accent);
+        }
+
+        .controls-bar {
+            background: var(--white-pure);
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid var(--border-color);
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 240px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.65rem 1rem 0.65rem 2.4rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--blue-accent);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--bg-offwhite);
+            border: 1px solid var(--border-color);
+            padding: 0.45rem 0.85rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.825rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--navy-main);
+            color: var(--white-pure);
+            border-color: var(--navy-main);
+        }
+
+        .player-table-wrapper {
+            background: var(--white-pure);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            overflow-x: auto;
+            box-shadow: var(--shadow-subtle);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 1rem;
-        }
-
-        th, td {
             text-align: left;
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
         }
 
         th {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            font-weight: 600;
-        }
-
-        tr:nth-child(even) {
-            background-color: #F8F9FA;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
+            background: #f1f5f9;
+            padding: 0.85rem 1rem;
             font-weight: 700;
-            color: var(--white);
+            color: var(--navy-dark);
+            border-bottom: 2px solid var(--border-color);
+            white-space: nowrap;
         }
 
-        .badge-qb { background-color: #D90429; }
-        .badge-rb { background-color: #0056B3; }
-        .badge-wr { background-color: #2B2D42; }
-        .badge-te { background-color: #8D99AE; }
+        td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: middle;
+        }
+
+        tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .player-name-cell {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .player-name {
+            font-weight: 700;
+            color: var(--navy-dark);
+        }
+
+        .player-meta {
+            font-size: 0.775rem;
+            color: var(--text-muted);
+        }
+
+        .draft-header {
+            background: var(--navy-dark);
+            color: var(--white-pure);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .draft-status {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .pick-clock {
+            background: var(--red-primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+
+        .draft-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 900px) {
+            .draft-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .roster-card {
+            background: var(--white-pure);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .roster-slot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px dashed var(--border-color);
+            font-size: 0.85rem;
+        }
+
+        .roster-slot-label {
+            font-weight: 700;
+            color: var(--text-muted);
+            width: 50px;
+        }
+
+        .roster-player-name {
+            font-weight: 700;
+            color: var(--navy-dark);
+            flex: 1;
+        }
+
+        .btn-action {
+            background: var(--red-primary);
+            color: var(--white-pure);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .btn-action:hover {
+            background: var(--red-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-action:disabled {
+            background: #cbd5e1;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: var(--navy-main);
+            color: var(--white-pure);
+        }
+
+        .btn-secondary:hover {
+            background: var(--navy-dark);
+        }
 
         .trade-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1.5rem;
+            align-items: start;
         }
 
         @media (max-width: 768px) {
             .trade-container {
                 grid-template-columns: 1fr;
             }
+            .trade-vs {
+                margin: 1rem auto;
+            }
         }
 
-        .trade-box {
-            background: var(--light-bg);
-            border: 2px dashed var(--border-color);
-            padding: 1rem;
-            border-radius: 8px;
-        }
-
-        .trade-result {
-            margin-top: 1.5rem;
+        .trade-team-box {
+            background: var(--white-pure);
+            border-radius: var(--radius-md);
             padding: 1.5rem;
-            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            min-height: 380px;
+        }
+
+        .trade-vs {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+        }
+
+        .vs-circle {
+            background: var(--red-primary);
+            color: var(--white-pure);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 10px rgba(217, 37, 37, 0.3);
+        }
+
+        .selected-player-tag {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            padding: 0.6rem 0.8rem;
+            border-radius: var(--radius-sm);
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .remove-player {
+            color: var(--red-primary);
+            cursor: pointer;
+            font-weight: 800;
+            margin-left: 0.5rem;
+        }
+
+        .trade-verdict-card {
+            background: var(--navy-dark);
+            color: var(--white-pure);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-top: 2rem;
             text-align: center;
-            font-size: 1.2rem;
-            font-weight: 700;
-            display: none;
         }
 
-        .trade-result.win {
-            background-color: #D4EDDA;
-            color: #155724;
-            border: 1px solid #C3E6CB;
+        .verdict-badge {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin: 0.75rem 0;
+            text-transform: uppercase;
         }
 
-        .trade-result.loss {
-            background-color: #F8D7DA;
-            color: #721C24;
-            border: 1px solid #F5C6CB;
+        /* Meter Bar */
+        .meter-bg {
+            height: 12px;
+            background: #334155;
+            border-radius: 6px;
+            margin: 1rem 0;
+            overflow: hidden;
+            position: relative;
         }
 
-        .trade-result.even {
-            background-color: #CCE5FF;
-            color: #004085;
-            border: 1px solid #B8DAFF;
+        .meter-fill {
+            height: 100%;
+            width: 50%;
+            background: linear-gradient(90deg, var(--red-primary), var(--blue-accent));
+            transition: width 0.4s ease;
+        }
+
+        .quiz-option {
+            background: var(--bg-offwhite);
+            border: 2px solid var(--border-color);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--blue-accent);
+            background: #eff6ff;
+        }
+
+        .quiz-option.correct {
+            border-color: var(--success-green);
+            background: #ecfdf5;
+            color: #065f46;
+        }
+
+        .quiz-option.wrong {
+            border-color: var(--red-primary);
+            background: #fef2f2;
+            color: #991b1b;
         }
 
         footer {
-            background-color: var(--primary-blue);
-            color: var(--white);
+            background: var(--navy-dark);
+            color: #9fb3c8;
+            padding: 2.5rem 1.5rem;
+            margin-top: 3rem;
+            border-top: 4px solid var(--red-primary);
+            font-size: 0.875rem;
             text-align: center;
-            padding: 1.5rem;
-            margin-top: auto;
-            border-top: 4px solid var(--accent-red);
-            font-size: 0.9rem;
         }
 
-        .mock-list {
-            list-style: none;
-            margin-top: 1rem;
+        footer strong {
+            color: var(--white-pure);
         }
 
-        .mock-list li {
-            padding: 0.5rem 1rem;
-            background: var(--light-bg);
-            margin-bottom: 0.5rem;
-            border-radius: 4px;
-            display: flex;
-            justify-content: space-between;
-        }
+        /* Utility classes */
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .flex-between { display: flex; justify-content: space-between; align-items: center; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="nav-container">
-            <a href="#" class="logo">Fantasy<span>IQ</span></a>
+        <div class="header-container">
+            <a href="#" class="logo-area" onclick="switchTab('guide')">
+                <div class="logo-icon">🏈</div>
+                <div class="logo-text">
+                    <h1>Gridiron <span>Genius</span></h1>
+                    <div class="logo-subtitle">Fantasy Football Starter Kit</div>
+                </div>
+            </a>
             <nav>
-                <ul>
-                    <li><button class="nav-btn active" onclick="switchTab('basics')">Basics</button></li>
-                    <li><button class="nav-btn" onclick="switchTab('draft-guide')">Draft Guide</button></li>
-                    <li><button class="nav-btn" onclick="switchTab('mock-draft')">Mock Draft</button></li>
-                    <li><button class="nav-btn" onclick="switchTab('trade-analyzer')">Trade Analyzer</button></li>
-                </ul>
+                <button class="nav-btn active" id="btn-guide" onclick="switchTab('guide')">
+                    📖 Fantasy 101
+                </button>
+                <button class="nav-btn" id="btn-rankings" onclick="switchTab('rankings')">
+                    📋 Draft Cheat Sheet
+                </button>
+                <button class="nav-btn" id="btn-mock" onclick="switchTab('mock')">
+                    ⏱️ Mock Draft
+                </button>
+                <button class="nav-btn" id="btn-trade" onclick="switchTab('trade')">
+                    ⚖️ Trade Analyzer
+                </button>
+                <button class="nav-btn" id="btn-quiz" onclick="switchTab('quiz')">
+                    🧠 Test Your IQ
+                </button>
             </nav>
         </div>
     </header>
 
     <main>
-        <div class="hero">
-            <h1>Master Fantasy Football with Confidence</h1>
-            <p>Designed specifically for beginners. Learn the rules, explore current ESPN player rankings, practice drafting, and evaluate trades effortlessly.</p>
-            <a href="https://fantasy.espn.com/football/players/projections" target="_blank" class="espn-link">View Live ESPN Projections ↗</a>
-        </div>
-
-        <section id="basics" class="tab-content active">
-            <div class="grid-2">
-                <div class="card">
-                    <h2>What is Fantasy Football?</h2>
-                    <p>Fantasy Football is a game where you act as the general manager of a virtual team made up of real NFL players. Each week, your players earn points based on their actual performance in real-life NFL games.</p>
+        <section id="tab-guide" class="tab-content active">
+            <div class="hero-banner">
+                <h2>Welcome to Fantasy Football! 🏈</h2>
+                <p>New to the game? Don't worry! Fantasy football transforms real-life NFL statistics into an exciting competitive game between you and your friends. Here is everything you need to know to play like a pro.</p>
+                <div class="hero-pills">
+                    <span class="hero-pill">✓ Quick 3-Min Read</span>
+                    <span class="hero-pill">✓ Standard & PPR Scoring Rules</span>
+                    <span class="hero-pill">✓ Interactive Point Simulator</span>
                 </div>
+            </div>
+
+            <div class="grid-3 mb-2">
                 <div class="card">
-                    <h2>How You Win Points</h2>
-                    <ul>
-                        <li><strong>Passing Yards:</strong> 1 point per 25 yards</li>
-                        <li><strong>Passing Touchdown:</strong> 4 points</li>
-                        <li><strong>Rushing / Receiving Yards:</strong> 1
+                    <div class="card-header">
+                        <div class="card-title">
+                            <span class="step-number">1</span> What is Fantasy Football?
+                        </div>
+                    </div>
+                    <p>You act as a team's General Manager (GM) and Head Coach. You draft real NFL players (like Patrick Mahomes or CeeDee Lamb) to build your roster. Each week during the NFL season, you set your lineup and compete head-to-head against another league member.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <span class="step-number">2</span> How Do You Win?
+                        </div>
+                    </div>
+                    <p>When your players stats occur in real Sunday games, they earn points for your fantasy team! For example: 10 rushing yards = 1 point, 1 touchdown = 6 points. Whichever fantasy owner scores more total points at the end of Monday night wins that week's matchup!</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <span class="step-number">3</span> Essential Roster Spots
+                        </div>
+                    </div>
+                    <p>Standard starting lineups usually consist of:</p>
+                    <ul style="margin-left: 1.25rem; margin-top: 0.5rem; font-size: 0.875rem;">
+                        <li><strong>1 QB:</strong> Quarterback (Passer)</li>
+                        <li><strong>2 RB:</strong> Running Backs (Runners)</li>
+                        <li><strong>2 WR:</strong> Wide Receivers (Catchers)</li>
+                        <li><strong>1 TE:</strong> Tight End (Hybrid)</li>
+                        <li><strong>1 FLEX:</strong> Extra RB, WR, or TE</li>
+                        <li><strong>1 Defense/Kicker:</strong> Team D/ST & K</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <!-- Interactive Point Calculator -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">🧮 Interactive Scoring Calculator</div>
+                        <span class="badge badge-blue">PPR Standard</span>
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); mb-2">Test how a real player performance translates to fantasy points!</p>
+                    
+                    <div class="calc-box">
+                        <div class="calc-row">
+                            <label for="calc-pass-yd">Passing Yards (1 pt per 25 yds):</label>
+                            <input type="number" id="calc-pass-yd" value="275" oninput="calculatePoints()">
+                        </div>
+                        <div class="calc-row">
+                            <label for="calc-pass-td">Passing Touchdowns (4 pts ea):</label>
+                            <input type="number" id="calc-pass-td" value="2" oninput="calculatePoints()">
+                        </div>
+                        <div class="calc-row">
+                            <label for="calc-rush-yd">Rushing/Rec Yards (1 pt per 10 yds):</label>
+                            <input type="number" id="calc-rush-yd" value="60" oninput="calculatePoints()">
+                        </div>
+                        <div class="calc-row">
+                            <label for="calc-rec">Receptions (1 pt per catch in PPR):</label>
+                            <input type="number" id="calc-rec" value="5" oninput="calculatePoints()">
+                        </div>
+                        <div class="calc-row">
+                            <label for="calc-td">Rushing/Rec Touchdowns (6 pts ea):</label>
+                            <input type="number" id="calc-td" value="1" oninput="calculatePoints()">
+                        </div>
+
+                        <div class="calc-result">
+                            <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em;">Total Calculated Points</div>
+                            <div class="calc-result-val" id="calc-output">30.00 PTS</div>
+                            <div style="font-size: 0.75rem; color: #cbd5e1; margin-top: 0.2rem;">This would be an outstanding fantasy performance!</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategy & Key Terms -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">💡 Beginner Draft Cheat Code</div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.9rem;">
+                        <div style="background: #f8fafc; padding: 0.75rem; border-left: 3px solid var(--red-primary); border-radius: 4px;">
+                            <strong>1. RB & WR Value in Early Rounds:</strong> Top running backs and wide receivers score the most consistent non-QB points. Secure 3 to 4 strong RBs and WRs in your first 4 draft rounds.
+                        </div>
+                        <div style="background: #f8fafc; padding: 0.75rem; border-left: 3px solid var(--blue-accent); border-radius: 4px;">
+                            <strong>2. Don't Draft a Kicker Early:</strong> Wait until the final round for Kickers and Defenses. Their year-to-year performance is unpredictable and easy to swap during the season.
+                        </div>
+                        <div style="background: #f8fafc; padding: 0.75rem; border-left: 3px solid var(--success-green); border-radius: 4px;">
+                            <strong>3. Know "Bye Weeks":</strong> Every NFL team takes 1 week off during the season. Avoid drafting too many key players who share the exact same Bye Week!
+                        </div>
+                        <div style="background: #f8fafc; padding: 0.75rem; border-left: 3px solid var(--warning-gold); border-radius: 4px;">
+                            <strong>4. "Handcuffing":</strong> Drafting the backup running back to your star starter protects your team if your top player suffers an injury.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-rankings" class="tab-content">
+            <div class="controls-bar">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="player-search" placeholder="Search NFL player, team, or position..." onkeyup="filterPlayers()">
+                </div>
+                <div class="filter-group">
+                    <button class="filter-btn active" onclick="setPosFilter('ALL', this)">ALL</button>
+                    <button class="filter-btn" onclick="setPosFilter('QB', this)">QB</button>
+                    <button class="filter-btn" onclick="setPosFilter('RB', this)">RB</button>
+                    <button class="filter-btn" onclick="setPosFilter('WR', this)">WR</button>
+                    <button class="filter-btn" onclick="setPosFilter('TE', this)">TE</button>
+                    <button class="filter-btn" onclick="setPosFilter('K', this)">K</button>
+                    <button class="filter-btn" onclick="setPosFilter('DST', this)">DST</button>
+                </div>
+            </div>
+
+            <div class="player-table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Player Name</th>
+                            <th>Pos</th>
+                            <th>Team</th>
+                            <th>ADP (Avg Pick)</th>
+                            <th>Tier</th>
+                            <th>Proj. Pts/G</th>
+                            <th>Beginner Advice</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rankings-table-body">
+                        <!-- Populated dynamically via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="tab-mock" class="tab-content">
+            <div class="hero-banner" style="padding: 1.5rem 2rem; margin-bottom: 1.25rem;">
+                <h2>⚡ Interactive Mock Draft Simulator</h2>
+                <p>Practice drafting against automated computer general managers. Select your pick position, test strategies, and build your dream team!</p>
+            </div>
+
+            <div id="mock-setup-view" class="card" style="max-width: 600px; margin: 2rem auto; text-align: center;">
+                <h3 style="font-size: 1.4rem; color: var(--navy-dark); margin-bottom: 0.5rem;">Configure Your Practice Draft</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Standard 12-Team League Snake Draft (4 Rounds)</p>
+                
+                <div style="margin-bottom: 1.5rem; text-align: left;">
+                    <label style="font-weight: 700; display: block; margin-bottom: 0.5rem;">Select Your Draft Spot:</label>
+                    <select id="user-draft-position" style="width: 100%; padding: 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-weight: 700;">
+                        <option value="1">Pick #1 (Top Pick - e.g., Christian McCaffrey / CeeDee Lamb)</option>
+                        <option value="3" selected>Pick #3 (Early Round Pick)</option>
+                        <option value="6">Pick #6 (Mid-Round Pick)</option>
+                        <option value="10">Pick #10 (Late Round Turn)</option>
+                        <option value="12">Pick #12 (End of Round Pick)</option>
+                    </select>
+                </div>
+
+                <button class="btn-action" style="width: 100%; justify-content: center; padding: 0.85rem; font-size: 1rem;" onclick="startMockDraft()">
+                    🚀 Start Mock Draft
+                </button>
+            </div>
+
+            <div id="mock-active-view" style="display: none;">
+                <div class="draft-header">
+                    <div class="draft-status">
+                        <div>
+                            <div style="font-size: 0.75rem; text-transform: uppercase; color: #9fb3c8;">Current Pick</div>
+                            <div style="font-size: 1.25rem; font-weight: 800;" id="current-pick-display">Round 1, Pick 1 (#1 Overall)</div>
+                        </div>
+                    </div>
+                    <div class="pick-clock" id="on-deck-display">
+                        On The Clock: Team 1
+                    </div>
+                    <div>
+                        <button class="btn-action btn-secondary" onclick="resetMockDraft()">🔄 Restart Draft</button>
+                    </div>
+                </div>
+
+                <div class="draft-layout">
+                    <!-- Available Players Pool -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Available Players</div>
+                            <div style="font-size: 0.85rem; color: var(--text-muted);" id="available-count">0 Players Left</div>
+                        </div>
+                        <div style="max-height: 480px; overflow-y: auto;">
+                            <table style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Rank</th>
+                                        <th>Player</th>
+                                        <th>Pos</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="mock-available-tbody">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- User Roster & Draft Feed -->
+                    <div>
+                        <div class="roster-card mb-2">
+                            <h4 style="color: var(--navy-dark); margin-bottom: 0.75rem; border-bottom: 2px solid var(--bg-offwhite); padding-bottom: 0.4rem;" id="user-roster-title">
+                                My Team Roster
+                            </h4>
+                            <div id="user-roster-container">
+                                <!-- Dynamic roster slots -->
+                            </div>
+                        </div>
+
+                        <div class="card" style="max-height: 220px; overflow-y: auto;">
+                            <h4 style="font-size: 0.9rem; color: var(--navy-dark); margin-bottom: 0.5rem;">Recent Pick Ticker</h4>
+                            <div id="draft-log" style="font-size: 0.825rem; display: flex; flex-direction: column; gap: 0.35rem;">
+                                <span style="color: var(--text-muted);">Draft has not started.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-trade" class="tab-content">
+            <div class="hero-banner" style="padding: 1.5rem 2rem; margin-bottom: 1.5rem;">
+                <h2>⚖️ Fantasy Trade Analyzer</h2>
+                <p>Unsure if a trade offer is fair? Select players on both sides of the deal to analyze overall fantasy value, positional impact, and get an instant verdict!</p>
+            </div>
+
+            <div class="trade-container">
+                <!-- Team A -->
+                <div class="trade-team-box">
+                    <h3 style="font-size: 1.1rem; color: var(--navy-dark); margin-bottom: 1rem;">Team A Gives:</h3>
+                    
+                    <select id="team-a-select" style="width: 100%; padding: 0.65rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-weight: 600;" onchange="addTradePlayer('A')">
+                        <option value="">-- Choose NFL Player to Give --</option>
+                    </select>
+
+                    <div id="team-a-list" style="margin-top: 1rem;">
+                        <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; margin-top: 2rem;">No players added yet.</p>
+                    </div>
+                </div>
+
+                <!-- VS Divider -->
+                <div class="trade-vs">
+                    <div class="vs-circle">VS</div>
+                </div>
+
+                <!-- Team B -->
+                <div class="trade-team-box">
+                    <h3 style="font-size: 1.1rem; color: var(--navy-dark); margin-bottom: 1rem;">Team B Gives:</h3>
+                    
+                    <select id="team-b-select" style="width: 100%; padding: 0.65rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-weight: 600;" onchange="addTradePlayer('B')">
+                        <option value="">-- Choose NFL Player to Receive --</option>
+                    </select>
+
+                    <div id="team-b-list" style="margin-top: 1rem;">
+                        <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; margin-top: 2rem;">No players added yet.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trade Analysis Verdict Box -->
+            <div class="trade-verdict-card">
+                <h3>Trade Grade & Analysis</h3>
+                
+                <div class="meter-bg">
+                    <div class="meter-fill" id="trade-meter"></div>
+                </div>
+
+                <div class="verdict-badge badge-blue" id="verdict-badge-text">Select players on both sides to evaluate</div>
+                
+                <p style="font-size: 0.95rem; max-width: 650px; margin: 0.5rem auto; color: #cbd5e1;" id="verdict-description">
+                    The analyzer compares rest-of-season projected fantasy value, positional rarity, and player tiers to protect beginners from bad trades.
+                </p>
+            </div>
+        </section>
+
+        <section id="tab-quiz" class="tab-content">
+            <div class="hero-banner" style="padding: 1.5rem 2rem; margin-bottom: 1.5rem;">
+                <h2>🧠 Fantasy Football Beginner Quiz</h2>
+                <p>Test your newfound fantasy knowledge before your real draft! Answer 5 quick questions to get your GM certification.</p>
+            </div>
+
+            <div class="card" style="max-width: 700px; margin: 0 auto;" id="quiz-card">
+                <div class="flex-between mb-2">
+                    <span class="badge badge-blue" id="quiz-progress">Question 1 of 5</span>
+                    <span style="font-weight: 700; color: var(--navy-main);" id="quiz-score-badge">Score: 0/5</span>
+                </div>
+
+                <h3 id="quiz-question-text" style="font-size: 1.2rem; color: var(--navy-dark); margin-bottom: 1.25rem;">
+                    Loading question...
+                </h3>
+
+                <div id="quiz-options-container">
+                    <!-- Options injected dynamically -->
+                </div>
+
+                <div id="quiz-explanation" style="display: none; padding: 1rem; background: #f1f5f9; border-radius: var(--radius-sm); margin-top: 1rem; font-size: 0.9rem;">
+                </div>
+
+                <button class="btn-action mt-3" id="quiz-next-btn" style="display: none; width: 100%; justify-content: center;" onclick="nextQuizQuestion()">
+                    Next Question ➔
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>Gridiron Genius Starter Kit</strong> &bull; Built for modern fantasy football beginners.</p>
+        <p style="margin-top: 0.4rem; color: #64748b;">Active NFL player stats, mock draft engine, trade values, and consensus draft tiers.</p>
+    </footer>
+
+    <script>
+        /* ==========================================================================
+           1. ACTIVE NFL PLAYERS DATASET (Ranks, ADP, Tiers, Projections, Trade Value)
+           ========================================================================== */
+        const PLAYERS_DATA = [
+            { id: 1, name: "Christian McCaffrey", pos: "RB", team: "SF", rank: 1, adp: 1.1, tier: 1, ppg: 22.4, tradeVal: 98, note: "Elitemost dual-threat running back. High touchdown floor." },
+            { id: 2, name: "CeeDee Lamb", pos: "WR", team: "DAL", rank: 2, adp: 2.2, tier: 1, ppg: 20.8, tradeVal: 95, note: "Target monster in high-volume passing offense." },
+            { id: 3, name: "Tyreek Hill", pos: "WR", team: "MIA", rank: 3, adp: 3.1, tier: 1, ppg: 20.1, tradeVal: 94, note: "Game-breaking speed, capable of 40-point fantasy outbursts." },
+            { id: 4, name: "Justin Jefferson", pos: "WR", team: "MIN", rank: 4, adp: 4.0, tier: 1, ppg: 19.5, tradeVal: 92, note: "Consensus best wide receiver talent in the league." },
+            { id: 5, name: "Ja'Marr Chase", pos: "WR", team: "CIN", rank: 5, adp: 5.3, tier: 1, ppg: 19.2, tradeVal: 91, note: "Massive upside paired with Joe Burrow." },
+            { id: 6, name: "Breece Hall", pos: "RB", team: "NYJ", rank: 6, adp: 6.1, tier: 1, ppg: 18.7, tradeVal: 90, note: "Dynamic runner & receiver with heavy volume." },
+            { id: 7, name: "Bijan Robinson", pos: "RB", team: "ATL", rank: 7, adp: 7.2, tier: 1, ppg: 18.2, tradeVal: 88, note: "Breakout candidate poised for 20+ touches weekly." },
+            { id: 8, name: "Amon-Ra St. Brown", pos: "WR", team: "DET", rank: 8, adp: 8.5, tier: 1, ppg: 18.0, tradeVal: 87, note: "Ultra-consistent slot receiver with high PPR floor." },
+            { id: 9, name: "Saquon Barkley", pos: "RB", team: "PHI", rank: 9, adp: 9.8, tier: 2, ppg: 17.6, tradeVal: 85, note: "Thriving in high-powered Eagles rushing attack." },
+            { id: 10, name: "A.J. Brown", pos: "WR", team: "PHI", rank: 10, adp: 10.4, tier: 2, ppg: 17.1, tradeVal: 84, note: "Dominant physically on deep targets and redzone." },
+            { id: 11, name: "Jonathan Taylor", pos: "RB", team: "IND", rank: 11, adp: 11.2, tier: 2, ppg: 16.9, tradeVal: 83, note: "Workhorse RB with league-winning upside." },
+            { id: 12, name: "Puka Nacua", pos: "WR", team: "LAR", rank: 12, adp: 12.1, tier: 2, ppg: 16.8, tradeVal: 82, note: "Rookie-record holder with high-volume role." },
+            { id: 13, name: "Garrett Wilson", pos: "WR", team: "NYJ", rank: 13, adp: 13.5, tier: 2, ppg: 16.4, tradeVal: 80, note: "Prime elite breakout candidate." },
+            { id: 14, name: "Jahmyr Gibbs", pos: "RB", team: "DET", rank: 14, adp: 14.8, tier: 2, ppg: 16.2, tradeVal: 79, note: "Lightning explosive player in top offense." },
+            { id: 15, name: "Kyren Williams", pos: "RB", team: "LAR", rank: 15, adp: 15.2, tier: 2, ppg: 16.0, tradeVal: 78, note: "Guaranteed goal-line touches and volume." },
+            { id: 16, name: "Josh Allen", pos: "QB", team: "BUF", rank: 16, adp: 18.1, tier: 1, ppg: 22.8, tradeVal: 85, note: "QB1 overall. Massive rushing touchdown floor." },
+            { id: 17, name: "Patrick Mahomes", pos: "QB", team: "KC", rank: 17, adp: 20.4, tier: 1, ppg: 21.5, tradeVal: 83, note: "Safest fantasy quarterback in football history." },
+            { id: 18, name: "Jalen Hurts", pos: "QB", team: "PHI", rank: 18, adp: 22.0, tier: 1, ppg: 21.8, tradeVal: 82, note: "'Tush Push' king with high rushing TD ceiling." },
+            { id: 19, name: "Lamar Jackson", pos: "QB", team: "BAL", rank: 19, adp: 24.5, tier: 1, ppg: 21.2, tradeVal: 81, note: "MVP dual-threat quarterback with unmatched rushing." },
+            { id: 20, name: "Travis Kelce", pos: "TE", team: "KC", rank: 20, adp: 25.1, tier: 1, ppg: 14.8, tradeVal: 76, note: "Premier tight end positional advantage." },
+            { id: 21, name: "Sam LaPorta", pos: "TE", team: "DET", rank: 21, adp: 27.3, tier: 1, ppg: 14.2, tradeVal: 74, note: "Young star Tight End with heavy redzone targets." },
+            { id: 22, name: "Derrick Henry", pos: "RB", team: "BAL", rank: 22, adp: 28.0, tier: 3, ppg: 15.4, tradeVal: 72, note: "Touchdown machine now in Baltimore's ground attack." },
+            { id: 23, name: "Marvin Harrison Jr.", pos: "WR", team: "ARI", rank: 23, adp: 29.5, tier: 3, ppg: 15.1, tradeVal: 71, note: "Generational rookie talent with instant WR1 target share." },
+            { id: 24, name: "Trey McBride", pos: "TE", team: "ARI", rank: 24, adp: 32.1, tier: 2, ppg: 13.5, tradeVal: 68, note: "Target monster at the tight end position." },
+            { id: 25, name: "De'Von Achane", pos: "RB", team: "MIA", rank: 25, adp: 33.4, tier: 3, ppg: 15.2, tradeVal: 70, note: "Highest home-run touchdown threat in football." },
+            { id: 26, name: "C.J. Stroud", pos: "QB", team: "HOU", rank: 26, adp: 38.0, tier: 2, ppg: 19.4, tradeVal: 68, note: "Elite young passer surrounded by weapons." },
+            { id: 27, name: "San Francisco 49ers", pos: "DST", team: "SF", rank: 40, adp: 120.0, tier: 1, ppg: 9.5, tradeVal: 20, note: "Top fantasy defense with high turnover rate." },
+            { id: 28, name: "Baltimore Ravens", pos: "DST", team: "BAL", rank: 41, adp: 122.0, tier: 1, ppg: 9.2, tradeVal: 19, note: "Elite pass rush and lockdown secondary." },
+            { id: 29, name: "Justin Tucker", pos: "K", team: "BAL", rank: 45, adp: 130.0, tier: 1, ppg: 8.8, tradeVal: 15, note: "Most reliable kicker in NFL history." },
+            { id: 30, name: "Harrison Butker", pos: "K", team: "KC", rank: 46, adp: 132.0, tier: 1, ppg: 8.6, tradeVal: 14, note: "High-scoring offense ensures frequent PATs and field goals." }
+        ];
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(`tab-${tabId}`).classList.add('active');
+            document.getElementById(`btn-${tabId}`).classList.add('active');
+
+            if (tabId === 'rankings') renderRankingsTable();
+            if (tabId === 'trade') setupTradeSelectors();
+            if (tabId === 'quiz') startQuiz();
+        }
+
+        /* ==========================================================================
+           2. FANTASY 101 SCORING CALCULATOR
+           ========================================================================== */
+        function calculatePoints() {
+            const passYds = parseFloat(document.getElementById('calc-pass-yd').value) || 0;
+            const passTds = parseFloat(document.getElementById('calc-pass-td').value) || 0;
+            const rushRecYds = parseFloat(document.getElementById('calc-rush-yd').value) || 0;
+            const receptions = parseFloat(document.getElementById('calc-rec').value) || 0;
+            const tds = parseFloat(document.getElementById('calc-td').value) || 0;
+
+            const total = (passYds * 0.04) + (passTds * 4) + (rushRecYds * 0.1) + (receptions * 1.0) + (tds * 6);
+            document.getElementById('calc-output').innerText = total.toFixed(2) + ' PTS';
+        }
+
+        /* ==========================================================================
+           3. DRAFT CHEAT SHEET & RANKINGS FILTER
+           ========================================================================== */
+        let currentPosFilter = 'ALL';
+
+        function setPosFilter(pos, btn) {
+            currentPosFilter = pos;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderRankingsTable();
+        }
+
+        function filterPlayers() {
+            renderRankingsTable();
+        }
+
+        function renderRankingsTable() {
+            const searchVal = document.getElementById('player-search').value.toLowerCase();
+            const tbody = document.getElementById('rankings-table-body');
+            tbody.innerHTML = '';
+
+            const filtered = PLAYERS_DATA.filter(p => {
+                const matchesPos = currentPosFilter === 'ALL' || p.pos === currentPosFilter;
+                const matchesSearch = p.name.toLowerCase().includes(searchVal) || p.team.toLowerCase().includes(searchVal) || p.pos.toLowerCase().includes(searchVal);
+                return matchesPos && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; padding:2rem; color:var(--text-muted);">No players match your search criteria.</td></tr>`;
+                return;
+            }
+
+            filtered.forEach(p => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="font-weight: 800; color: var(--navy-dark);">#${p.rank}</td>
+                    <td>
+                        <div class="player-name-cell">
+                            <span class="player-name">${p.name}</span>
+                            <span class="player-meta">${p.team} &bull; Tier ${p.tier}</span>
+                        </div>
+                    </td>
+                    <td><span class="position-badge pos-${p.pos}">${p.pos}</span></td>
+                    <td style="font-weight: 600;">${p.team}</td>
+                    <td> Pick ${p.adp}</td>
+                    <td><span class="badge badge-gold">Tier ${p.tier}</span></td>
+                    <td style="font-weight: 700; color: var(--blue-accent);">${p.ppg} pts</td>
+                    <td style="font-size: 0.825rem; color: var(--text-muted); max-width: 280px;">${p.note}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        /* ==========================================================================
+           4. INTERACTIVE MOCK DRAFT ENGINE
+           ========================================================================== */
+        let mockState = {
+            userSpot: 3,
+            currentOverallPick: 1,
+            totalRounds: 4,
+            teamsCount: 12,
+            availablePlayers: [],
+            userRoster: [],
+            draftLog: []
+        };
+
+        function startMockDraft() {
+            const spotSelect = document.getElementById('user-draft-position');
+            mockState.userSpot = parseInt(spotSelect.value);
+            mockState.currentOverallPick = 1;
+            mockState.availablePlayers = [...PLAYERS_DATA].sort((a,b) => a.rank - b.rank);
+            mockState.userRoster = [];
+            mockState.draftLog = [];
+
+            document.getElementById('mock-setup-view').style.display = 'none';
+            document.getElementById('mock-active-view').style.display = 'block';
+
+            renderUserRoster();
+            processMockPick();
+        }
+
+        function resetMockDraft() {
+            document.getElementById('mock-setup-view').style.display = 'block';
+            document.getElementById('mock-active-view').style.display = 'none';
+        }
+
+        function getCurrentDraftTeam(pickNum) {
+            const round = Math.ceil(pickNum / mockState.teamsCount);
+            const pickInRound = (pickNum - 1) % mockState.teamsCount + 1;
+            // Snake Draft Logic: Odd rounds 1->12, Even rounds 12->1
+            if (round % 2 !== 0) {
+                return pickInRound;
+            } else {
+                return mockState.teamsCount - pickInRound + 1;
+            }
+        }
+
+        function processMockPick() {
+            const maxPicks = mockState.totalRounds * mockState.teamsCount;
+            
+            if (mockState.currentOverallPick > maxPicks) {
+                finishMockDraft();
+                return;
+            }
+
+            const currentRound = Math.ceil(mockState.currentOverallPick / mockState.teamsCount);
+            const pickInRound = ((mockState.currentOverallPick - 1) % mockState.teamsCount) + 1;
+            const activeTeam = getCurrentDraftTeam(mockState.currentOverallPick);
+
+            document.getElementById('current-pick-display').innerText = `Round ${currentRound}, Pick ${pickInRound} (#${mockState.currentOverallPick} Overall)`;
+            
+            if (activeTeam === mockState.userSpot) {
+                document.getElementById('on-deck-display').innerText = "👉 YOUR TURN TO PICK!";
+                document.getElementById('on-deck-display').style.background = "var(--success-green)";
+                renderMockAvailableTable(true);
+            } else {
+                document.getElementById('on-deck-display').innerText = `On Clock: Team ${activeTeam}`;
+                document.getElementById('on-deck-display').style.background = "var(--red-primary)";
+                renderMockAvailableTable(false);
+
+                // Simulate AI choice after brief delay for smooth realism
+                setTimeout(() => {
+                    aiMakePick(activeTeam);
+                }, 400);
+            }
+        }
+
+        function aiMakePick(teamNum) {
+            if (mockState.availablePlayers.length === 0) return;
+            
+            // AI picks top available player by ADP/Rank
+            const picked = mockState.availablePlayers.shift();
+            
+            logDraftPick(teamNum, picked);
+            mockState.currentOverallPick++;
+            processMockPick();
+        }
+
+        function userPickPlayer(playerId) {
+            const idx = mockState.availablePlayers.findIndex(p => p.id === playerId);
+            if (idx === -1) return;
+
+            const picked = mockState.availablePlayers.splice(idx, 1)[0];
+            mockState.userRoster.push(picked);
+
+            renderUserRoster();
+            logDraftPick(mockState.userSpot, picked, true);
+            
+            mockState.currentOverallPick++;
+            processMockPick();
+        }
+
+        function logDraftPick(teamNum, player, isUser = false) {
+            const logContainer = document.getElementById('draft-log');
+            if (mockState.draftLog.length === 0) logContainer.innerHTML = '';
+
+            const entry = document.createElement('div');
+            entry.style.padding = '0.3rem 0.5rem';
+            entry.style.borderRadius = '4px';
+            entry.style.background = isUser ? '#d1fae5' : '#f1f5f9';
+            entry.style.borderLeft = isUser ? '3px solid var(--success-green)' : '3px solid var(--navy-light)';
+            
+            entry.innerHTML = `<strong>Pick #${mockState.currentOverallPick} (Team ${teamNum}):</strong> ${player.name} (${player.pos} - ${player.team})`;
+            
+            logContainer.prepend(entry);
+            mockState.draftLog.push({ pick: mockState.currentOverallPick, team: teamNum, player });
+        }
+
+        function renderMockAvailableTable(isUserTurn) {
+            const tbody = document.getElementById('mock-available-tbody');
+            tbody.innerHTML = '';
+            document.getElementById('available-count').innerText = `${mockState.availablePlayers.length} Available`;
+
+            mockState.availablePlayers.slice(0, 10).forEach(p => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="font-weight: 700;">#${p.rank}</td>
+                    <td>
+                        <strong>${p.name}</strong><br>
+                        <span style="font-size:0.75rem; color:var(--text-muted);">${p.team}</span>
+                    </td>
+                    <td><span class="position-badge pos-${p.pos}">${p.pos}</span></td>
+                    <td>
+                        <button class="btn-action" style="padding: 0.35rem 0.75rem; font-size: 0.8rem;" 
+                            ${!isUserTurn ? 'disabled' : ''} 
+                            onclick="userPickPlayer(${p.id})">
+                            Draft
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderUserRoster() {
+            const container = document.getElementById('user-roster-container');
+            container.innerHTML = '';
+
+            const slots = ['QB', 'RB', 'RB', 'WR', 'WR', 'TE', 'FLEX'];
+            
+            slots.forEach((slot, idx) => {
+                const filled = mockState.userRoster[idx];
+                const div = document.createElement('div');
+                div.className = 'roster-slot';
+                
+                div.innerHTML = `
+                    <span class="roster-slot-label">${slot}</span>
+                    <span class="roster-player-name">${filled ? filled.name : '<span style="color:#cbd5e1; font-weight:normal;">Empty Slot</span>'}</span>
+                    ${filled ? `<span class="position-badge pos-${filled.pos}">${filled.pos}</span>` : ''}
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function finishMockDraft() {
+            document.getElementById('on-deck-display').innerText = "🎉 DRAFT COMPLETE!";
+            document.getElementById('on-deck-display').style.background = "var(--blue-accent)";
+            
+            // Calculate beginner grade
+            const userScore = mockState.userRoster.reduce((sum, p) => sum + p.tradeVal, 0);
+            let grade = 'A';
+            if (userScore < 200) grade = 'B+';
+            if (userScore < 150) grade = 'B';
+
+            alert(`🎉 Congratulations! You completed your 4-Round Mock Draft!\n\nYour Team Draft Grade: ${grade}\nTotal Team Value Rating: ${userScore} pts.\n\nCheck out the Trade Analyzer next to practice trading your players!`);
+        }
+
+        /* ==========================================================================
+           5. TRADE ANALYZER LOGIC
+           ========================================================================== */
+        let tradeTeamA = [];
+        let tradeTeamB = [];
+
+        function setupTradeSelectors() {
+            const selA = document.getElementById('team-a-select');
+            const selB = document.getElementById('team-b-select');
+
+            selA.innerHTML = '<option value="">-- Choose Player to Give --</option>';
+            selB.innerHTML = '<option value="">-- Choose Player to Receive --</option>';
+
+            PLAYERS_DATA.forEach(p => {
+                selA.innerHTML += `<option value="${p.id}">${p.name} (${p.pos} - ${p.team})</option>`;
+                selB.innerHTML += `<option value="${p.id}">${p.name} (${p.pos} - ${p.team})</option>`;
+            });
+        }
+
+        function addTradePlayer(team) {
+            const selectEl = document.getElementById(`team-${team.toLowerCase()}-select`);
+            const playerId = parseInt(selectEl.value);
+            if (!playerId) return;
+
+            const player = PLAYERS_DATA.find(p => p.id === playerId);
+            if (!player) return;
+
+            if (team === 'A' && !tradeTeamA.some(p => p.id === playerId)) {
+                tradeTeamA.push(player);
+            } else if (team === 'B' && !tradeTeamB.some(p => p.id === playerId)) {
+                tradeTeamB.push(player);
+            }
+
+            selectEl.value = '';
+            renderTradeLists();
+            evaluateTrade();
+        }
+
+        function removeTradePlayer(team, playerId) {
+            if (team === 'A') {
+                tradeTeamA = tradeTeamA.filter(p => p.id !== playerId);
+            } else {
+                tradeTeamB = tradeTeamB.filter(p => p.id !== playerId);
+            }
+            renderTradeLists();
+            evaluateTrade();
+        }
+
+        function renderTradeLists() {
+            const listA = document.getElementById('team-a-list');
+            const listB = document.getElementById('team-b-list');
+
+            listA.innerHTML = tradeTeamA.length === 0 ? '<p style="font-size:0.85rem; color:var(--text-muted); text-align:center;">No players added yet.</p>' : '';
+            listB.innerHTML = tradeTeamB.length === 0 ? '<p style="font-size:0.85rem; color:var(--text-muted); text-align:center;">No players added yet.</p>' : '';
+
+            tradeTeamA.forEach(p => {
+                listA.innerHTML += `
+                    <div class="selected-player-tag">
+                        <div>
+                            <span class="position-badge pos-${p.pos}">${p.pos}</span>
+                            <strong>${p.name}</strong> (${p.team})
+                        </div>
+                        <span class="remove-player" onclick="removeTradePlayer('A', ${p.id})">✕</span>
+                    </div>
+                `;
+            });
+
+            tradeTeamB.forEach(p => {
+                listB.innerHTML += `
+                    <div class="selected-player-tag">
+                        <div>
+                            <span class="position-badge pos-${p.pos}">${p.pos}</span>
+                            <strong>${p.name}</strong> (${p.team})
+                        </div>
+                        <span class="remove-player" onclick="removeTradePlayer('B', ${p.id})">✕</span>
+                    </div>
+                `;
+            });
+        }
+
+        function evaluateTrade() {
+            const valA = tradeTeamA.reduce((sum, p) => sum + p.tradeVal, 0);
+            const valB = tradeTeamB.reduce((sum, p) => sum + p.tradeVal, 0);
+
+            const meterFill = document.getElementById('trade-meter');
+            const badgeText = document.getElementById('verdict-badge-text');
+            const descText = document.getElementById('verdict-description');
+
+            if (tradeTeamA.length === 0 || tradeTeamB.length === 0) {
+                meterFill.style.width = '50%';
+                badgeText.className = 'verdict-badge badge-blue';
+                badgeText.innerText = 'Select players on both sides';
+                descText.innerText = 'Add players to Team A and Team B to compare rest-of-season trade value.';
+                return;
+            }
+
+            const total = valA + valB;
+            const percentA = (valA / total) * 100;
+            meterFill.style.width = `${percentA}%`;
+
+            const diff = Math.abs(valA - valB);
+
+            if (diff <= 8) {
+                badgeText.className = 'verdict-badge badge-green';
+                badgeText.innerText = '⚖️ EVEN & FAIR TRADE';
+                descText.innerText = 'This trade is well-balanced! Both teams receive roughly equal value for their rosters.';
+            } else if (valA > valB) {
+                badgeText.className = 'verdict-badge badge-red';
+                badgeText.innerText = '🚨 TEAM A GIVES UP TOO MUCH';
+                descText.innerText = `Team A is giving away ${diff} more points in trade value. Team B gets the better deal here!`;
+            } else {
+                badgeText.className = 'verdict-badge badge-gold';
+                badgeText.innerText = '⭐ GREAT DEAL FOR TEAM A!';
+                descText.innerText = `Team A is acquiring ${diff} more points in player value. Excellent trade for Team A to accept!`;
+            }
+        }
+
+        /* ==========================================================================
+           6. FANTASY IQ QUIZ ENGINE
+           ========================================================================== */
+        const QUIZ_DATA = [
+            {
+                q: "What does 'PPR' stand for in fantasy football scoring?",
+                options: [
+                    "Points Per Reception (1 point for every catch made)",
+                    "Pass Progression Rating",
+                    "Post-Play Recovery Time",
+                    "Player Performance Rating"
+                ],
+                correct: 0,
+                explain: "PPR stands for Points Per Reception! In PPR leagues, receivers and running backs get an extra point for catching a pass, making catch-heavy players very valuable."
+            },
+            {
+                q: "Which positions should you generally avoid drafting in early rounds?",
+                options: [
+                    "Wide Receivers and Running Backs",
+                    "Kickers and Team Defenses (D/ST)",
+                    "Quarterbacks and Tight Ends",
+                    "Rookie players"
+                ],
+                correct: 1,
+                explain: "Kickers and Defenses fluctuate heavily week-to-week. Always wait until the final two draft rounds to select your Kicker and Defense!"
+            },
+            {
+                q: "What happens when one of your starting players has a 'Bye Week'?",
+                options: [
+                    "They earn double fantasy points.",
+                    "They do not play that week, so you must sub in a bench player.",
+                    "Their team automatically scores 10 fantasy points.",
+                    "You must trade them to another manager."
+                ],
+                correct: 1,
+                explain: "During an NFL team's Bye Week, they have no game scheduled. You must swap that player to your bench for that specific week."
+            },
+            {
+                q: "What is a 'Handcuff' running back?",
+                options: [
+                    "A player who gets penalised frequently.",
+                    "A backup running back drafted to protect against injury to your star starter.",
+                    "A running back who only plays on third downs.",
+                    "A trade penalty enforced by the league GM."
+                ],
+                correct: 1,
+                explain: "Drafting the direct backup to your star running back is called 'handcuffing'. If your starter gets hurt, your backup takes over seamless production!"
+            },
+            {
+                q: "What is the primary goal of setting your lineup each week?",
+                options: [
+                    "Drafting as many players from your favorite real-life team as possible.",
+                    "Outscoring your head-to-head opponent's total fantasy points.",
+                    "Collecting as many Quarterbacks as you can fit on your bench.",
+                    "Never making any roster moves or trades."
+                ],
+                correct: 1,
+                explain: "Your weekly head-to-head matchup is won by accumulating more total points from your active starting lineup than your opponent!"
+            }
+        ];
+
+        let quizIndex = 0;
+        let quizScore = 0;
+
+        function startQuiz() {
+            quizIndex = 0;
+            quizScore = 0;
+            renderQuizQuestion();
+        }
+
+        function renderQuizQuestion() {
+            const q = QUIZ_DATA[quizIndex];
+            document.getElementById('quiz-progress').innerText = `Question ${quizIndex + 1} of ${QUIZ_DATA.length}`;
+            document.getElementById('quiz-score-badge').innerText = `Score: ${quizScore}/${QUIZ_DATA.length}`;
+            document.getElementById('quiz-question-text').innerText = q.q;
+            
+            const container = document.getElementById('quiz-options-container');
+            container.innerHTML = '';
+
+            const explanationBox = document.getElementById('quiz-explanation');
+            explanationBox.style.display = 'none';
+            document.getElementById('quiz-next-btn').style.display = 'none';
+
+            q.options.forEach((opt, idx) => {
+                const div = document.createElement('div');
+                div.className = 'quiz-option';
+                div.innerText = opt;
+                div.onclick = () => selectQuizAnswer(idx, div);
+                container.appendChild(div);
+            });
+        }
+
+        function selectQuizAnswer(selectedIndex, element) {
+            const q = QUIZ_DATA[quizIndex];
+            const allOptions = document.querySelectorAll('.quiz-option');
+            
+            // Disable further clicks
+            allOptions.forEach(opt => opt.onclick = null);
+
+            if (selectedIndex === q.correct) {
+                element.classList.add('correct');
+                quizScore++;
+            } else {
+                element.classList.add('wrong');
+                allOptions[q.correct].classList.add('correct');
+            }
+
+            document.getElementById('quiz-score-badge').innerText = `Score: ${quizScore}/${QUIZ_DATA.length}`;
+            
+            const explanationBox = document.getElementById('quiz-explanation');
+            explanationBox.style.display = 'block';
+            explanationBox.innerHTML = `<strong>Explanation:</strong> ${q.explain}`;
+
+            const nextBtn = document.getElementById('quiz-next-btn');
+            nextBtn.style.display = 'flex';
+            if (quizIndex === QUIZ_DATA.length - 1) {
+                nextBtn.innerText = 'Finish Quiz 🎉';
+            } else {
+                nextBtn.innerText = 'Next Question ➔';
+            }
+        }
+
+        function nextQuizQuestion() {
+            quizIndex++;
+            if (quizIndex < QUIZ_DATA.length) {
+                renderQuizQuestion();
+            } else {
+                showQuizResults();
+            }
+        }
+
+        function showQuizResults() {
+            const card = document.getElementById('quiz-card');
+            card.innerHTML = `
+                <div style="text-align:center; padding: 2rem 1rem;">
+                    <div style="font-size: 3rem; margin-bottom: 0.5rem;">🏆</div>
+                    <h2 style="font-size: 1.8rem; color: var(--navy-dark);">Quiz Completed!</h2>
+                    <p style="font-size: 1.2rem; margin: 0.75rem 0; font-weight: 700; color: var(--red-primary);">
+                        You Scored ${quizScore} out of ${QUIZ_DATA.length}!
+                    </p>
+                    <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto 1.5rem auto;">
+                        ${quizScore >= 4 ? "Fantastic job! You are officially ready to dominate your fantasy football draft!" : "Good effort! Review the Fantasy 101 guide and try again to sharpen your skills."}
+                    </p>
+                    <button class="btn-action" style="margin: 0 auto;" onclick="location.reload()">
+                        🔄 Retake Quiz / Restart App
+                    </button>
+                </div>
+            `;
+        }
+
+        // Initialize scoring on load
+        window.onload = function() {
+            calculatePoints();
+        };
+    </script>
+</body>
+</html>
